@@ -1,0 +1,171 @@
+/* */ /* LOGIN PAGE CSS */ /* */
+
+/**/
+/* body */
+/**/
+
+body  {
+  background-color: white;
+  overflow-x: hidden;
+}
+
+/**/
+/* All <a> tags - Links */
+/**/
+
+a	{
+	text-decoration: none;
+	color: black;
+}
+
+a:hover	{
+	transition: all .5s ease;
+	color: red;
+}
+
+/**/
+/* Big Letter ARTZY In middle of page */
+/**/
+
+#title  {
+  font-family: 'Megrim', cursive;
+  font-size: 10vw;
+  width: 30vw;
+  height: 10vh;
+  top: 0px;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+	text-align: center;
+  color: black;
+  position: fixed;
+  left: 35vw;
+	text-shadow: 10px 10px rgba(0, 0, 0, .05);
+}
+
+/**/
+/* Login Box*/
+/**/
+/* Container */
+/**/
+
+#loginContainer {
+  border: 1px solid black;
+  box-shadow: 0 0 10px black;
+  height: 40vh;
+  width: 30vw;
+  left: 35vw;
+  top: 30vh;
+  position: fixed;
+}
+
+/**/
+/* Form Container for placement */
+/**/
+
+#loginFormHolder	{
+	text-align: center;
+	position: relative;
+	top: 10vh;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 2vh;
+}
+
+/**/
+/* Login Form */
+/**/
+
+form	{
+	display: incline-block;
+}
+
+/**/
+/* Username/Password Inputs */
+/**/
+
+.input:focus	{
+	outline: none;
+	transition: all .5s ease;
+  box-shadow: 0 0 3px gray;
+}
+
+/**/
+/* Login Button */
+/**/
+
+#loginSubmitButton	{
+	text-decoration: none;
+	color: black;
+	display: incline-block;
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 2.5vh;
+}
+
+#loginSubmitButton:hover	{
+	color: red;
+	box-shadow: 0 0 5px gray;
+	transition: all .5s ease;
+	cursor: pointer;
+}
+
+#loginSubmitButton:focus	{
+	outline: none;
+}
+
+/**/
+/* Footer */
+/**/
+/* Container */
+/**/
+
+#loginFooter	{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 200vw;
+	height: 3vh;
+	padding: 2vh 3vw 2vh 3vw;
+	font-size: 2vh;
+}
+
+/**/
+/* Copyright Text in bottom left */
+/**/
+
+#copyrightInfo	{
+	float: left;
+	font-family: 'Josefin Sans', sans-serif;
+	color: rgba(0, 0, 0, .4);
+	text-align: center;
+	margin-right: 2vw;
+}
+
+/**/
+/* Fake links Bottom left */
+/**/
+
+#loginLinks	{
+	float: left;
+	font-family: 'Josefin Sans', sans-serif;
+	color: black;
+	font-size: 2vh;
+	text-align: center;
+}
+
+/**/
+/* Create an Account link Bottom Right */
+/**/
+
+#createAccLink	{
+	float: right;
+	font-family: 'Josefin Sans', sans-serif;
+	color: black;
+	font-size: 2vh;
+	text-align: center;
+	position: fixed;
+	right: 0px;
+	margin-right: 2vw
+}
+
+/**/

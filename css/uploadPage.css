@@ -1,0 +1,22 @@
+#content{
+	position: relative;
+	height: 40vh;
+	width: 30vw;
+	top: 30vh;
+	left: .5vw;
+  padding-top: 3vh;
+	//box-shadow: 0 0 5px black;
+  float: left;
+  padding-left: 2.5vw;
+}
+
+textarea  {
+  resize: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+textarea:focus  {
+  transition: all .5s ease;
+  box-shadow: 0 0 5px gray;
+  outline: none;
+}

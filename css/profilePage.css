@@ -1,0 +1,209 @@
+body{
+  background-color: #f9f9f9;
+  font-family: 'Josefin Sans', sans-serif;
+}
+#userImage{
+	border: black 2px solid;
+	
+	margin: 0 auto;
+}
+#post{
+	display: block; 
+	margin: 0 auto;
+}
+/* everything that has to do with an image post */
+#imageContent{
+	border-style: solid;
+	border-width: 0px;
+	width: 550px;
+
+	
+}
+#textContent{
+	position: static;
+    top: 0vh;
+	border-style: solid;
+	border-width: 0px;
+	word-wrap: break-word; 
+	width: 435px;
+	float: left;
+	
+	
+}
+#textPostContent{
+	position: static;
+    top: 0vh;
+	border-style: solid;
+	border-width: 0px;
+	width: 30vw;
+	
+	display: inline-block;
+}
+
+#imageInfo{
+	border-style: solid;
+	border-width: 0px;
+}
+/*icons for the image*/
+#imageOptions{
+	overflow: visible;
+	position: relative;
+	top: -10px;
+	padding-top: 0vh;
+	border-style: solid;
+	border-width: 0px;
+	width: 4vw;
+	height: 22vh;
+
+	margin-top: 0vh;
+	float: right;
+	
+	//background-color: yellow;
+	
+	
+
+	
+}
+#textOptions{
+	position: relative;
+	border-style: solid;
+	border-width: 0px;
+	width: 4vw;
+	height: 34vh;
+	
+	float: right;
+	
+	
+}
+/*general*/
+#imageOptionsIcon{
+  width:4vw;
+  height: 7.5vh;
+  //background-color: green;
+  margin-bottom: 1vh;
+	z-index: 1;
+}
+/*likeIcon*/
+#imageOptionsLikeIcon{
+  width:7vw;
+  height: 7.5vh;
+  //background-color: red;
+  margin-bottom: 1vh;
+  z-index: 1;
+  display: inline-block;
+  
+}
+#imageOptionsMailIcon{
+	position: relative;
+	background-color: red;
+	left: -1vw;
+}
+#imageOptionsCritiqueIcon{
+	font-size: 7vh;
+	position: relative;
+	top: -11vh;
+	opacity: .5;
+	//background-color: red;
+}
+#imageOptionsTrashIcon{
+	position: relative;
+	
+	width: 3.8vw;
+	height: 9vh;
+	top: -9.8vh;
+	left: -.7vw;
+}
+#likeButton{
+	position:relative;
+	background-size: 100% 100%;
+	height: 6.4vh;
+	width: 3.75vw;
+	top: 1vh;
+	left: -.45vw;
+}
+.likesCounter{
+	position: relative;
+	top: 1.5vh;
+	font-size: 4vh;
+	float: right;
+	
+	
+}
+#timesSymbol{
+	position: relative;
+	float: right;
+	font-size: 3vh;
+	margin: 0px;
+	padding: 0px;
+	top: 2.4vh;
+	right: 2.5vw;
+	
+}
+/*specific profile icon stuff */
+#imageOptionsProfileIcon{
+  position: absolute;
+  width:4vw;
+  height: 7.5vh;
+  background-color: purple;
+  margin-bottom: 1vh;
+  z-index: 1;
+  
+}
+#imageOptionsProfileIcon:hover{
+	opacity: 0;
+}
+
+#imageOptionsProfileIconR:hover{
+	position: absolute;
+	transition: .5s all ease;
+	box-shadow: 0 0 5px gray;
+	bottom: 3vh;
+}
+
+textarea{
+  resize: none;
+}
+.commentB{
+  margin: auto;
+  display: block;
+  font-family: 'Josefin Sans', sans-serif;
+	background-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+	color: black;
+  border: none;
+}
+.commentB:hover{
+	color: red;
+	transition: all .5s ease;
+  box-shadow: 0 0 5px gray;
+}
+
+#comment{
+	border-style: solid;
+	border-width: 0px;
+}
+#critique{
+	border-style: solid;
+	border-width: 0px;
+}
+
+#userInfo{
+    
+    width: 20vw;
+    margin: auto;
+	border-style: solid;
+	border-width: 0px; 
+}
+
+#allPosts{
+	background-color: white;
+	margin-left: 18vw;
+	width: 60vw;
+	padding-top: 4vh;
+}
+
+#profilePic{
+	border-radius: 50%;
+	height: 10vh;
+}
+

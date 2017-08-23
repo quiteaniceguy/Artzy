@@ -1,0 +1,163 @@
+#body	{
+	background-color: white;
+  overflow-x: hidden;
+}
+
+#leftContainer	{
+	position: fixed;
+	width: 45vw;
+	height: 90vh;
+	margin: 5vh 2.5vw 5vh 2.5vw;
+	box-shadow: 0 0 10px black;
+	border: 1px solid black;
+	color: black;
+	left: 0vw;
+}
+
+#title	{
+	position: fixed;
+	top: 0px;
+	font-family: 'Megrim', cursive;
+  font-size: 10vw;
+  width: 30vw;
+  height: 10vh;
+	padding-top: 10vh;
+  padding-bottom: 10vh;
+	margin-left: 7vw;
+	text-align: center;
+  color: black;
+	text-shadow: 10px 10px rgba(0, 0, 0, .05);
+}
+
+#createYour	{
+	position: fixed;
+	font-family: 'Josefin Sans', sans-serif;
+  font-size: 3vw;
+  width: 30vw;
+	top: 8vh;
+  height: 10vh;
+	left: 0vw;
+	text-align: center;
+  color: black;
+}
+
+#acc	{
+	position: fixed;
+	top: 28vh;
+	font-family: 'Josefin Sans', sans-serif;
+  font-size: 3vw;
+  width: 65vw;
+  height: 10vh;
+	left: 0vw;
+	text-align: center;
+  color: black;
+}
+
+#goalBack	{
+	position: fixed;
+	width: 40vw;
+	height: 80vh;
+	top: 8vh;
+	left: 54vw;
+	background-image: url("goalBack.png");
+	opacity: .7;
+	background-image: cover;
+	background-repeat: no-repeat;
+  background-size: 40vw 80vh;
+}
+
+#goal	{
+	position: fixed;
+	width: 30vw;
+	height: 30vh;
+	top: 30vh;
+	left: 60vw;
+	font-family: 'Josefin Sans', sans-serif;
+	color: black;
+	font-size: 3vw;
+	text-align: center;
+	overflow: ;
+	line-height: 10vh;
+}
+
+form		{
+	position: fixed;
+	top: 35vh;
+	font-family: 'Josefin Sans', sans-serif;
+	margin-left: 5vw;
+  max-width: 35vw;
+}
+
+input:focus	{
+	outline: none;
+	transition: all .5s ease;
+	box-shadow: 0 0 5px gray;
+}
+
+textarea{
+	resize: none;
+  max-width: 35vw;
+}
+
+#loginLink	{
+	float: right;
+	font-family: 'Josefin Sans', sans-serif;
+	color: black;
+	font-size: 2vh;
+	text-align: center;
+	position: fixed;
+	right: 0px;
+	margin-right: 2vw;
+	bottom: 2.7vh;
+}
+
+a	{
+	text-decoration: none;
+	color: black;
+}
+
+a:hover	{
+	transition: all .5s ease;
+	color: red;
+}
+
+.button{
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 1.8vh;
+	display: incline-block;
+	background-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+	color: black;
+	border: none;
+}
+
+.button:hover{
+	color: red;
+	transition: all .5s ease;
+	box-shadow: 0 0 5px gray;
+}
+
+#cover{
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 1.8vh;
+	left: 15vw;
+	top: 77vh;
+	position: fixed;
+	z-index: -1;
+	display: incline-block;
+	background-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+	color: black;
+}
+
+#cover:hover{
+	color: red;
+	transition: all .5s ease;
+	box-shadow: 0 0 5px gray;
+}
+
+textarea:focus{
+	outline: none;
+	transition: all .5s ease;
+	box-shadow: 0 0 5px black;
+}

@@ -1,0 +1,42 @@
+#messageLinks{
+	
+	position: absolute;
+	top: 10vh;
+	left: 45vw;
+	width: 10vw;
+	height: 5vh;
+	background-color: white;
+	
+	font-size: 4vh;
+}
+#messageHeader{
+	font-size: 3.5vh;
+	
+	
+	width: 40vw;
+	height: 5vh;
+	background-color: white;
+	
+	font-size: 4vh;
+}
+#messageBody{
+	
+	margin-left: 5vw;
+	width: 10vw;
+	background-color: white;
+	
+	font-size: 2vh;
+}
+#messageOptions{
+	
+	width: 10vw;
+	
+	background-color: white;
+	
+	font-size: 2vh;
+}
+#wholeMessage{
+	border-style: solid;
+	border-color: grey;
+	border-width: .11vw;
+}
