@@ -17,10 +17,7 @@ function displayNormalFormatWithLoadButton($mediaIds, $nMediaToLoad, $conn){
 		
 		$mediaToPrint = displayMediaInNormalFormat($temp_media, $conn);
 		/////testing
-		$mediaType = array(1);
-		getMediaAndType($mediaIds[$i], $mediaType, $conn);
 		
-		echo $mediaType[0];
 		
 		
 		
@@ -82,7 +79,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 		
 		$temp_image = getImage($temp_media["id"], $conn);
 				
-		if ( $temp_image["width"] > 10 && file_exists('../../images/' . $temp_image["id"] . '.jpg') ) {
+		if ( $temp_image["width"] > 10 && file_exists('../../images/' . $temp_media["id"] . '.jpg') ) {
 			$imageId=$temp_image["id"];
 				
 			///finds scaled imaeg size
@@ -94,7 +91,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 			///outputs image
 			
 			$returnText = $returnText . "<div id='imageContent' > " .
-				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='../../images/{$imageId}.jpg' />";
+				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='../../images/{$temp_media["id"]}.jpg' />";
 				//sets account link to user of the image 
 		$returnText = $returnText . displayImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
 			$returnText = $returnText . "</div>";
@@ -138,7 +135,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 	elseif ( $temp_media["name"] == "audio"){
 		$temp_audio = getAudio($temp_media["id"], $conn);
 		
-		if (file_exists('../../userData/audioPost/audio/' . $temp_audio["id"] . '.mp3')){
+		if (file_exists('../../userData/audioPost/audio/' . $temp_media["id"] . '.mp3')){
 			$returnText = $returnText . "<div id='post' style='width: 400px' > ";
 			$returnText = $returnText . $temp_audio["audioName"] . "<br/>";
 			
@@ -148,7 +145,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "
 					<audio controls style='width: 400px'> 
-						<source src='../../userData/audioPost/audio/{$temp_audio["id"]}.mp3'>
+						<source src='../../userData/audioPost/audio/{$temp_media["id"]}.mp3'>
 						
 					</audio>	
 			";

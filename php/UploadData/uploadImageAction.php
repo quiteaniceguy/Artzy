@@ -64,7 +64,7 @@
 
 	 
 	  //uploads image
-	  if ( move_uploaded_file($imagetemp, "../../images/" . $id . ".jpg")){
+	  if ( move_uploaded_file($imagetemp, "../../images/" . $mediaId . ".jpg")){
 		echo "file moved";
 	  }else{
 		die("file move failed");

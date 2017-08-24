@@ -13,7 +13,7 @@
 	}
 	
 	function getWriting($media, $conn){
-		$sql = "SELECT table_textData.title, table_text.mediaText
+		$sql = "SELECT table_textData.title, table_text.mediaText, table_textData.textId
 		FROM table_textData
 		INNER JOIN table_text ON table_textData.textId = table_text.id 
 		WHERE mediaId='{$media}' ";

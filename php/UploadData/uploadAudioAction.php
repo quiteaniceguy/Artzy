@@ -75,7 +75,7 @@
 	 
 	  //uploads image
 	  
-	  if ( move_uploaded_file($imagetemp, "../../userData/audioPost/images/" . $id . ".jpg")){
+	  if ( move_uploaded_file($imagetemp, "../../userData/audioPost/images/" . $mediaId . ".jpg")){
 		echo "image moved";
 	  }else{
 		echo $_FILES["uploadedImage"]["error"];
@@ -83,7 +83,7 @@
 	  }
 	  
 	  //uploades audio
-	  if ( move_uploaded_file($audiotemp, "../../userData/audioPost/audio/" . $id . ".mp3")){
+	  if ( move_uploaded_file($audiotemp, "../../userData/audioPost/audio/" . $mediaId . ".mp3")){
 		echo "audiofile moved";
 	  }else{
 		echo $_FILES["uploadedAudio"]["error"];
