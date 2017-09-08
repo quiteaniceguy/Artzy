@@ -9,9 +9,36 @@
   float: left;
   padding-left: 2.5vw;
 }
+#imageUpload{
+	top: 10vh;
+	left: 25vw;
+	position: absolute;
+	//background-color: blue;
+}
+#audioUpload{
+	top: 50vh;
+	left: 25vw;
+	position: absolute;
+	//background-color: yellow;
+}
+#textUpload{
+	position: absolute;
+	top: 10vh;
+	left: 50vw;
+	//background-color: red;
+}
+
+#mediaText{
+	resize: none;
+	overflow-y: scroll;
+	overflow: scroll;
+	max-height: 50vh;
+	max-width: 50vw;
+}
 
 textarea  {
   resize: none;
+  
   font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -19,4 +46,14 @@ textarea:focus  {
   transition: all .5s ease;
   box-shadow: 0 0 5px gray;
   outline: none;
+}
+
+#footer{
+	text-align: center;
+	position: fixed;
+	left: 0vw;
+	top: 95vh;
+	height: 5vh;
+	width: 100vw;
+	//background-color: red;
 }

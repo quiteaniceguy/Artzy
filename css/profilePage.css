@@ -2,9 +2,17 @@ body{
   background-color: #f9f9f9;
   font-family: 'Josefin Sans', sans-serif;
 }
+#whiteBody{
+	background-color: white;
+}
 #userImage{
+	position: relative;
 	border: black 2px solid;
-	
+	margin: 0 auto;
+}
+#largeUserImage{
+	position: absolute;
+	border: black 2px solid;
 	margin: 0 auto;
 }
 #post{
@@ -13,9 +21,18 @@ body{
 }
 /* everything that has to do with an image post */
 #imageContent{
+	position: relative;
 	border-style: solid;
 	border-width: 0px;
 	width: 550px;
+
+	
+}
+#largeImageContent{
+	position: relative;
+	border-style: solid;
+	border-width: 0px;
+	width: 60vw;
 
 	
 }
@@ -113,6 +130,14 @@ body{
 	top: -9.8vh;
 	left: -.7vw;
 }
+#imageOptionsUserTrashIcon{
+	position: relative;
+	
+	width: 3.8vw;
+	height: 9vh;
+	top: -16vh;
+	left: -.7vw;
+}
 #likeButton{
 	position:relative;
 	background-size: 100% 100%;
@@ -207,3 +232,19 @@ textarea{
 	height: 10vh;
 }
 
+.profilePicture{
+	background-repeat: no-repeat;
+	
+	background-clip: padding-box;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+    -moz-background-clip: padding;
+	background-size: cover;
+    background-position: center center;
+	
+    
+	
+	width: 12vw;
+	height: 12vw;
+	
+}

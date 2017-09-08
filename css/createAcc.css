@@ -11,7 +11,7 @@
 	box-shadow: 0 0 10px black;
 	border: 1px solid black;
 	color: black;
-	left: 0vw;
+	left: 30vw;
 }
 
 #title	{
@@ -160,4 +160,22 @@ textarea:focus{
 	outline: none;
 	transition: all .5s ease;
 	box-shadow: 0 0 5px black;
+}
+
+#backImage {
+	image-rendering: high;
+    image-rendering: crisp-edges;
+    //image-rendering: pixelated;
+	
+	width: 100vw;
+	height: 140vh;
+	
+	position: absolute;
+	top: -30vh;
+	left: -.1vw;
+}
+#back{
+	width: 95vw;
+	height: 95vh;
+	overflow: hidden; 
 }

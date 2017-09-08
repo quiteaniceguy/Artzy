@@ -7,9 +7,9 @@
 <body>
 	<br/>
 	<br/>
-	<a href="php/createAcc/createAcc.php"><p>CREATE AN ACCOUNT</p></a>
+	<a href="src/createAcc/createAcc.php"><p>CREATE AN ACCOUNT</p></a>
 	<br/>
-	<a href="php/Login/Login.php"><p>LOGIN</p></a>
-	<?php header('Location: php/Login/Login.php'); ?>
+	<a href="src/Login/Login.php"><p>LOGIN</p></a>
+	<?php header('Location: src/Login/Login.php'); ?>
 </body>
 </html>

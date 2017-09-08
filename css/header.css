@@ -10,7 +10,7 @@ body  {
   float: right;
 	list-style-type: none;
 	text-decoration: none;
-	width: 6.5vw;
+	width: 8vw;
 	height: 3.1vh;
   padding-right: 1vw;
   padding-left: 1vw;
@@ -18,14 +18,15 @@ body  {
 }
 
 #searchDiv{
+	width: 30vw;
+	left: 10vw;
 	position: fixed;
-	padding-left: 10vw;
-	padding-top: .9vh;
+	padding-left: 0vw;
+	padding-top: 1.2vh;
+	//background-color: yellow;
 }
 
-#logo{
-	padding-top: .5vh;
-}
+
 
 ::-webkit-input-placeholder{
 	color: red;
@@ -62,9 +63,7 @@ a {
 		padding-top: 1vh;
 }
   
-a:hover{
-	color: red;
-}
+
 
 #links{
   padding-right: 2vw;
@@ -88,6 +87,8 @@ a:hover{
   box-shadow: 0 0 5px gray;
 }
 #searchBar{
+	font-size: 1.4vh;
+	//color: black;
 	display: inline-block;
     width: 45vw;
 	height: 2.4vh;
@@ -96,19 +97,23 @@ a:hover{
     transition: width 0.4s ease-in-out;
 }
 #logo{
+	font-family: 'Lora', serif;
+	font-size: 2.6vh;
+	
 	position: fixed;
 	top: 1vh;
-	left: 2vw;
+	left: 0vw;
   
 	
-	width: 5vw;
-	height: 10vh;
-	height: 2vh;
+	width:10vw;
+	height: 3vh;
 	display: inline-block;
 	text-align: center;
+	
+	//background-color: red;
 }
 #livesearch{
-  
+  font-size: 3vh;
   position: absolute;
   left: 10vw;
   top: 4.5vh;
