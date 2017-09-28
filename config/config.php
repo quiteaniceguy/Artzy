@@ -19,7 +19,7 @@ return [
 	
 	'storage' => [
 		"images" => "https://s3-us-west-2.amazonaws.com/themuralreviewbucket/UserData/ImagePost/",
-		"audio" => "../UserData/audioPost/audio/"
+		"audio" => "https://s3-us-west-2.amazonaws.com/themuralreviewbucket/UserData/AudioPost/Audio/"
 		
 	
 	]

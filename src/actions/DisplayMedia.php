@@ -135,7 +135,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 	elseif ( $temp_media["name"] == "audio"){
 		$temp_audio = getAudio($temp_media["id"], $conn);
 		
-		if (file_exists("../" . $config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
+		if (URLChecker::checkURL($config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
 			$returnText = $returnText . "<div id='post' style='width: 400px' > ";
 			$returnText = $returnText . $temp_audio["audioName"] . "<br/>";
 			
@@ -145,7 +145,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "
 					<audio controls style='width: 400px'> 
-						<source src='../{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
+						<source src='{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
 						
 					</audio>	
 			";
@@ -233,7 +233,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 	elseif ( $temp_media["name"] == "audio"){
 		$temp_audio = getAudio($temp_media["id"], $conn);
 		
-		if (file_exists("../" . $config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
+		if (URLChecker::checkURL($config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
 			$returnText = $returnText . "<div id='post' style='width: 400px' > ";
 			$returnText = $returnText . $temp_audio["audioName"] . "<br/>";
 			
@@ -243,7 +243,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "
 					<audio controls style='width: 400px'> 
-						<source src='../{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
+						<source src='{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
 						
 					</audio>	
 			";
@@ -329,7 +329,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 	elseif ( $temp_media["name"] == "audio"){
 		$temp_audio = getAudio($temp_media["id"], $conn);
 		
-		if (file_exists("../" . $config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
+		if (URLChecker::checkURL($config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
 			$returnText = $returnText . "<div id='post' style='width: 400px' > ";
 			$returnText = $returnText . $temp_audio["audioName"] . "<br/>";
 			
@@ -339,7 +339,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "
 					<audio controls style='width: 400px'> 
-						<source src='../{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
+						<source src='{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
 						
 					</audio>	
 			";
