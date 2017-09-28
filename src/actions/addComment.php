@@ -2,12 +2,12 @@
 	include_once "SendMessageTypeAction.php";
 	include_once "DataRetriever.php";
 	
-	$servername="localhost";
-	$username="root";
-	$password="";
-	$dbname="db_artzytest";
-	
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$config = require('../../config/config.php');
+		
+	$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
+	if(!$conn){
+		die("connection to server failed");
+	}
 	
 	if($conn->connect_error){
 		die("connection error");

@@ -9,9 +9,11 @@
   if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL){
 	  
 	  //connects to server
-	  $conn = new mysqli($servername, $username, $password, $dbName);
+	  $config = require('../../config/config.php');
+		
+	  $conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
 	  if(!$conn){
-		die("failed");
+		die("connection to server failed");
 	  }
 	  
 	  //gets video data

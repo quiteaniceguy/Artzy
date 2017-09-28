@@ -15,6 +15,13 @@ return [
 		'password' => "",
 		'dbName' => "db_artzytest"
 	
+	],
+	
+	'storage' => [
+		"images" => "https://s3-us-west-2.amazonaws.com/themuralreviewbucket/UserData/ImagePost/",
+		"audio" => "../UserData/audioPost/audio/"
+		
+	
 	]
 	
 	

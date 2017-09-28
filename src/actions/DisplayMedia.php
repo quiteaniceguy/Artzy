@@ -1,7 +1,10 @@
 <?php
+///////////////THIS FILE IS SOOOOOOOO GROOOSSSSSSS
 include_once "DisplayMediaOptions.php";
 include_once "DisplayComment.php";
 include_once "DataRetriever.php";
+include_once "../RemoteFileLibrary/URLChecker.php";
+$config = require('../../config/config.php');
 
 function displayNormalFormatWithLoadButton($mediaIds, $nMediaToLoad, $conn){
 	///allPosts contains all posts
@@ -60,6 +63,8 @@ function displayUserNormalFormat($mediaIds, $nMediaToLoad, $conn){
 }
 
 function displayMediaInNormalFormat($temp_media, $conn){
+	global $config;
+	
 	$username = getUsername($temp_media["userId"], $conn);
 	
 	
@@ -67,8 +72,9 @@ function displayMediaInNormalFormat($temp_media, $conn){
 	if ( $temp_media["name"] =="image"){
 		
 		$temp_image = getImage($temp_media["id"], $conn);
+		
 				
-		if ( $temp_image["width"] > 10 && file_exists('../../UserData/imagePost/' . $temp_media["id"] . '.jpg') ) {
+		if ( $temp_image["width"] > 10 && getimagesize($config["storage"]["images"] . $temp_media["id"] . '.jpg')[0] > 0 ) {
 			$imageId=$temp_image["id"];
 				
 			///finds scaled imaeg size
@@ -81,7 +87,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "<div id='imageContent' > " .
 				"<a href = '../MediaViewer/MediaViewer.php?mediaId={$temp_media["id"]}' target = '_blank' >" . 
-				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='../../UserData/imagePost/{$temp_media["id"]}.jpg' />" . 
+				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='{$config["storage"]["images"]}{$temp_media["id"]}.jpg' />" . 
 				"</a>";
 				//sets account link to user of the image 
 		$returnText = $returnText . displayImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
@@ -96,6 +102,9 @@ function displayMediaInNormalFormat($temp_media, $conn){
 
 			$returnText = $returnText . displayComment($temp_media["id"], $_SESSION["currentId"], 0, $conn);
 			$returnText = $returnText . "</div><br/>";	
+		}else{
+			//$returnText = $returnText . "<p>file doesn't exist: {$temp_media["id"]}  {$config["storage"]["images"]}{$temp_media["id"]}.jpg  ";	
+			
 		}
 		
 	}
@@ -126,7 +135,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 	elseif ( $temp_media["name"] == "audio"){
 		$temp_audio = getAudio($temp_media["id"], $conn);
 		
-		if (file_exists('../../userData/audioPost/audio/' . $temp_media["id"] . '.mp3')){
+		if (file_exists("../" . $config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
 			$returnText = $returnText . "<div id='post' style='width: 400px' > ";
 			$returnText = $returnText . $temp_audio["audioName"] . "<br/>";
 			
@@ -136,7 +145,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "
 					<audio controls style='width: 400px'> 
-						<source src='../../userData/audioPost/audio/{$temp_media["id"]}.mp3'>
+						<source src='../{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
 						
 					</audio>	
 			";
@@ -158,6 +167,8 @@ function displayMediaInNormalFormat($temp_media, $conn){
 
 
 function displayMediaInLargeFormat($temp_media, $conn){
+	global $config; 
+	
 	$username = getUsername($temp_media["userId"], $conn);
 	
 	
@@ -166,7 +177,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 		
 		$temp_image = getImage($temp_media["id"], $conn);
 				
-		if ( $temp_image["width"] > 10 && file_exists('../../UserData/imagePost/' . $temp_media["id"] . '.jpg') ) {
+		if ( $temp_image["width"] > 10 && file_exists("../" . $config["storage"]["images"] . $temp_media["id"] . '.jpg') ) {
 			$imageId=$temp_image["id"];
 				
 			///finds scaled imaeg size
@@ -178,7 +189,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 			///outputs image
 			
 			$returnText = $returnText . "<div id='largeImageContent' style = 'left: 12.5vw;'> " .
-				"<img id='userImage' style='height: {$adj_img_height}vw; width: {$adj_img_width}vw; left: 0vw;' src='../../UserData/imagePost/{$temp_media["id"]}.jpg' />";
+				"<img id='userImage' style='height: {$adj_img_height}vw; width: {$adj_img_width}vw; left: 0vw;' src='../{$config["storage"]["images"]}/{$temp_media["id"]}.jpg' />";
 				//sets account link to user of the image 
 		$returnText = $returnText . displayImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
 			$returnText = $returnText . "</div>";
@@ -222,7 +233,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 	elseif ( $temp_media["name"] == "audio"){
 		$temp_audio = getAudio($temp_media["id"], $conn);
 		
-		if (file_exists('../../userData/audioPost/audio/' . $temp_media["id"] . '.mp3')){
+		if (file_exists("../" . $config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
 			$returnText = $returnText . "<div id='post' style='width: 400px' > ";
 			$returnText = $returnText . $temp_audio["audioName"] . "<br/>";
 			
@@ -232,7 +243,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "
 					<audio controls style='width: 400px'> 
-						<source src='../../userData/audioPost/audio/{$temp_media["id"]}.mp3'>
+						<source src='../{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
 						
 					</audio>	
 			";
@@ -252,6 +263,8 @@ function displayMediaInLargeFormat($temp_media, $conn){
 	return $returnText;
 }
 function displayUserMediaInNormalFormat($temp_media, $conn){
+	global $config;
+	
 	$username = getUsername($temp_media["userId"], $conn);
 	
 	
@@ -260,7 +273,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 		
 		$temp_image = getImage($temp_media["id"], $conn);
 				
-		if ( $temp_image["width"] > 10 && file_exists('../../UserData/imagePost/' . $temp_media["id"] . '.jpg') ) {
+		if ( $temp_image["width"] > 10 && file_exists("../" . $config["storage"]["images"] . $temp_media["id"] . '.jpg') ) {
 			$imageId=$temp_image["id"];
 				
 			///finds scaled imaeg size
@@ -272,7 +285,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			///outputs image
 			
 			$returnText = $returnText . "<div id='imageContent' > " .
-				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='../../UserData/imagePost/{$temp_media["id"]}.jpg' />";
+				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='../{$config["storage"]["images"]}{$temp_media["id"]}.jpg' />";
 				//sets account link to user of the image 
 		$returnText = $returnText . displayUserImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
 			$returnText = $returnText . "</div>";
@@ -316,7 +329,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 	elseif ( $temp_media["name"] == "audio"){
 		$temp_audio = getAudio($temp_media["id"], $conn);
 		
-		if (file_exists('../../userData/audioPost/audio/' . $temp_media["id"] . '.mp3')){
+		if (file_exists("../" . $config["storage"]["audio"] . $temp_media["id"] . '.mp3')){
 			$returnText = $returnText . "<div id='post' style='width: 400px' > ";
 			$returnText = $returnText . $temp_audio["audioName"] . "<br/>";
 			
@@ -326,7 +339,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "
 					<audio controls style='width: 400px'> 
-						<source src='../../userData/audioPost/audio/{$temp_media["id"]}.mp3'>
+						<source src='../{$config["storage"]["audio"]}{$temp_media["id"]}.mp3'>
 						
 					</audio>	
 			";

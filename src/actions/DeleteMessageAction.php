@@ -1,13 +1,9 @@
 <?php
-	$server = 'localhost';
-	$username = 'root';
-	$password = '';
-	$database = 'db_artzytest';
-	
-	$conn = new mysqli($server, $username, $password, $database);
-	if($conn->connect_error){
-		echo $conn->connect_error;
-		die("connection to server not found");
+	$config = require('../../config/config.php');
+		
+	$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
+	if(!$conn){
+		die("connection to server failed");
 	}
 	
 	$sql = "DELETE FROM table_mailboxes WHERE id = {$_GET["mailid"]}";

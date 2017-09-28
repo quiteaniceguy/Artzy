@@ -1,4 +1,11 @@
 <?php
+
+
+	
+	function __construct($conn){
+		$this->$conn = $conn;
+	}
+	
 	function getAudio($media, $conn){
 		$sql = "SELECT * FROM table_audio WHERE mediaId = {$media}";
 		$audio_result = $conn->query($sql);
@@ -295,6 +302,5 @@
 		
 		$mediaType[0] = $media["mediaType"];
 	}
-	
 
 ?>

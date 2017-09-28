@@ -1,20 +1,26 @@
 <?php
   session_start();
   
+  require "../../config/S3Connect.php";
+  
   ini_set('display_errors',1);
   error_reporting(E_ALL);
   
-  $servername="localhost";
-  $username="root";
-  $password="";
-  $dbName="db_artzytest";
+  require "../RemoteFileLibrary/FileUploader.php";
+  
+  require "../../config/S3Connect.php";
+
+  $config = require('../../config/config.php');
+  $fileUploader = new FileUplaoder($config['s3']['bucket'], $s3);
   
   if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL){
 	  
 	  //connects to server
-	  $conn = new mysqli($servername, $username, $password, $dbName);
+	  $config = require('../../config/config.php');
+		
+	  $conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
 	  if(!$conn){
-		die("failed");
+		die("connection to server failed");
 	  }
 	  
 	  //gets image data
@@ -85,7 +91,8 @@
 	  }
 	  */
 	  //uploades audio
-	  if ( move_uploaded_file($audiotemp, "../../userData/audioPost/audio/" . $mediaId . ".mp3")){
+	  //$fileUploader->uploadS3File($_FILES, "/var/www/html/artzy/src/FileUploader/TempFiles/", "UserData/AudioPost/Audio/", "uploadedAudio", $mediaId . ".mp3") == 0
+	  if ( $fileUploader->uploadS3File($_FILES, "/var/www/html/artzy/src/RemoteFileLibrary/TempFiles/", "UserData/AudioPost/Audio/", "uploadedAudio", $mediaId . ".mp3") == 0){
 		echo "audiofile moved";
 	  }else{
 		echo $_FILES["uploadedAudio"]["error"];

@@ -10,16 +10,33 @@
 	require "PHPMailer/PHPMailerAutoload.php";
 
     try{
-     
-	  
+		//check if all of form is filled out
+		$formFilledOut = 
+			is_string($_POST["username"]) &&
+			is_string($_POST["password"]) &&
+			is_string($_POST["email"]) &&
+			is_string($_POST["about"]) &&
+			is_string($_POST["school"]) &&
+			is_string($_POST["fName"]) &&
+			is_string($_POST["lName"]) &&
+			is_numeric($_POST["age"]) &&
+			is_numeric($_POST["phoneNumber"]) ;
+		if (!$formFilledOut) {
+			header( 'Location: createAcc.php?error=MUST FILL OUT EVERYTHING' );
+		}
+		
+		$passwordsMatch = $_POST["password"] == $_POST["passwordCheck"];
+		if (!$passwordsMatch) {
+			header( 'Location: createAcc.php?error=PASSWORD DO NOT MATCH' );
+		}
       
 	  
 	  
 	  
 	  
 	  ///uploads user info to database
-      include '../ConnectionLibrary/ConnectoToDB.php';
-	  $conn = new PDO("mysql:host={$SERVER_NAME};dbname={$SERVER_DB_NAME}", $SERVER_USERNAME, $SERVER_PASSWORD);
+      $config = require('../../config/config.php');
+	  $conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
       
       if($conn->connect_error){
 			die("failed");

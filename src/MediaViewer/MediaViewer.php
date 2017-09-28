@@ -12,12 +12,10 @@
 	<script src = '../JSActions/addLike.js'></script>
 	<script src = '../JSActions/LoadMedia.js'></script>
 	<?php
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbName="db_artzytest";
 		
-		$conn = new mysqli($servername, $username, $password, $dbName);
+		$config = require('../../config/config.php');
+		
+		$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
 		if(!$conn){
 			die("connection to server failed");
 		}

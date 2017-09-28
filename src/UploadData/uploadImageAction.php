@@ -1,17 +1,23 @@
 <?php
   session_start();
   
-  $servername="localhost";
-  $username="root";
-  $password="";
-  $dbName="db_artzytest";
+ 
   
+  require "../RemoteFileLibrary/FileUploader.php";
+  require "../../config/S3Connect.php";
+
+  $config = require('../../config/config.php');
+  $fileUploader = new FileUplaoder($config['s3']['bucket'], $s3);
+
   if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL){
 	  
 	  //connects to server
-	  $conn = new mysqli($servername, $username, $password, $dbName);
+	  
+	  
+	  
+	  $conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
 	  if(!$conn){
-		die("failed");
+		die("connection to server failed");
 	  }
 	  
 	  //gets image data
@@ -64,11 +70,15 @@
 
 	 
 	  //uploads image
-	  if ( move_uploaded_file($imagetemp, "../../UserData/imagePost/" . $mediaId . ".jpg")){
+	 
+	 
+	  
+	  if ( $fileUploader->uploadS3File($_FILES, "/var/www/html/artzy/src/RemoteFileLibrary/TempFiles/", "UserData/ImagePost/", "uploadedImage", $mediaId . ".jpg") == 0){
 		echo "file moved";
 	  }else{
 		die("file move failed");
 	  }
+	  
   }else{
 	  echo "must be logged in to upload file";
   }

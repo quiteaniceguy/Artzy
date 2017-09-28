@@ -13,13 +13,9 @@
 	
 	
 	<?php
-	
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbName="db_artzytest";
+		$config = require('../../config/config.php');
 		
-		$conn = new mysqli($servername, $username, $password, $dbName);
+		$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
 		if(!$conn){
 			die("connection to server failed");
 		}

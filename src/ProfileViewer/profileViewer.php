@@ -94,15 +94,11 @@
 		$pass=NULL;
 		$id=NULL;
 		
+		$config = require('../../config/config.php');
 		
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbName="db_artzytest";
-		
-		$conn=new mysqli($servername, $username, $password, $dbName);
-		if($conn->connect_error){
-			die("connection to server not found");
+		$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
+		if(!$conn){
+			die("connection to server failed");
 		}
 		
 		

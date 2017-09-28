@@ -55,9 +55,11 @@
 		echo "<div id='logo'><span style = 'z-index: 20;' onclick = 'testFunc()'>the mural.</span></div> ";
 		echo "<div id='searchDiv'><input id='searchBar' class='searchBar' type='text' name ='search' placeholder='Search For Groups(writing, music, visualarts, etc...)' onkeyup = 'showResult(this.value)' /></div> ";
 		echo "<a id='headerElement' href='../Login/Logout.php'>LOGOUT</a>";
-		echo "<a id='headerElement' href='../UploadData/uploadImage.php' >UPLOAD </a>";
+		echo "<a id='headerElement' href='../UploadData/uploadMedia.php' >UPLOAD </a>";
 		echo "<a id='headerElement' href='../ProfilePage/profilePage.php'>PROFILE</a>";
 		echo "<a id='headerElement' href='../MessagesPage/UserMessages.php'>MESSAGES</a>";
+		echo "<a id='headerElement' href='../MessagesPage/UserMessages.php'>THE MURAL REVIEW</a>";
+		
 		//echo "<a id='headerElement' href='../CritiqueViewer/CritiqueViewer.php'>CRITIQUES</a>";
 		
 		echo "<div id='livesearch'  ></div>";
