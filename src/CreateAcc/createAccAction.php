@@ -10,6 +10,40 @@
 	require "PHPMailer/PHPMailerAutoload.php";
 
     try{
+		///uploads user info to database
+        $config = require('../../config/config.php');
+	    $conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
+      
+        if($conn->connect_error){
+			die("failed");
+		}
+		
+		///check if other account already exists with the same username
+		$otherAccount = false;
+		$sql="SELECT * FROM db_users WHERE username = :username";
+		try{
+			$stmt = $conn->prepare($sql);
+		    $stmt->bindParam(':username' , $_POST["username"]);
+			
+			if($stmt->execute())
+				echo "executed";
+		}catch(Exception $e){
+			die("prepare failed: " . $e);
+		}	
+		
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		
+		if($result != false ){
+			header( 'Location: createAcc.php?error=USERNAME ALREADY EXISTS' );
+			die('other account already exists');
+			$otherAccount = true;
+		}else{
+			//die("other account doesn't exist");
+		}
+			
+		
+		
+		
 		//check if all of form is filled out
 		$formFilledOut = 
 			is_string($_POST["username"]) &&
@@ -34,13 +68,7 @@
 	  
 	  
 	  
-	  ///uploads user info to database
-      $config = require('../../config/config.php');
-	  $conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
-      
-      if($conn->connect_error){
-			die("failed");
-		}
+	  
       
 	  ///create verification code for user to verify account
 	  $verificationCode=rand(1,2000000);

@@ -28,12 +28,12 @@
 		
 		$("#send").click(function(){
 			var messageType = 'STANDARD_MESSAGE';
-			alert("first: " + messageType);
+			//alert("first: " + messageType);
 			if( $('#messageType').is(':checked') ){
 				messageType = 'CRITIQUE_MESSAGE';
 			}
 			
-			alert("second: " + messageType);
+			//alert("second: " + messageType);
 			
 			
 			$.ajax({
@@ -66,16 +66,19 @@
 		TO: <textarea type = "text" id = "sendto" placeholder = "" rows = "1" cols = "60"></textarea><br/>
 		
 		</br>
+		
+		<!--
 		CRITIQUE:
+		
 		<label class="switch">
 		  <input type="checkbox" id = "messageType" >
 		  <span class="slider round"></span>
 		</label></br>
-		
+		-->
 		<textarea id = 'mediaIdValue' style = 'visibility: hidden; width: 0vw; height: 0vh;' >test</textarea></br>
 		
 		MESSAGE: <br/><textarea type="text" name="audioName" rows="5" cols="60" id="message"></textarea><br/>
-		<button id = "send">test</button><br/>
+		<button id = "send">send</button><br/>
 		
   </div>
   

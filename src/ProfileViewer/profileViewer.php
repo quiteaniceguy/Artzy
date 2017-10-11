@@ -129,7 +129,7 @@
 				}
 				 echo "<b style='font-size: 12vh' >" . $temp_user["username"] . "'s account: </b><br/>";
 				
-				echo "<img  style='position: absolute; height:5vh; width: 5vw; left: 47.5vw;' src='../../icons/mailIconTwo.png'  onClick = \"openModal('{$username}', '{$mediaId}')\" /><br/><br/><br/> ";
+				//echo "<img  style='position: absolute; height:5vh; width: 5vw; left: 47.5vw;' src='../../icons/mailIconTwo.png'  onClick = \"openModal('{$username}', '{$mediaId}')\" /><br/><br/><br/> ";
 				
 				echo "<br/><br/><b style='font-size: 4vh'>ABOUT</b><br/><br/>" .
 				 "<p style='width: 20vw;'>{$temp_user["about"]}</p>";
@@ -164,7 +164,7 @@
 				array_push($mediaIds, $row["id"]);
 			}
 			///load more button is really broken
-			displayNormalFormatWithLoadButton($mediaIds, 8, $conn);
+			displayNormalFormatWithLoadButton($mediaIds, 50, $conn);
 		}else{
 			echo "<br/><br/><br/><br/><br/>";
 			echo "<b style='font-size: 7vh; ' >" . $_GET["username"] . " has no images :(</b>";
