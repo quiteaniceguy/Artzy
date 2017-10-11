@@ -32,7 +32,7 @@ function displayNormalFormatWithLoadButton($mediaIds, $nMediaToLoad, $conn){
 	echo "</div>";//allPosts
 	
 	///create load more media button
-	echo "<span  id = \"loadMediaButton\" onClick = \"loadMedia('{$_GET["group"]}', {$nMedia}, 7)\"><b>Load more Media</b></span>";
+	echo "<span  style = 'position:absoulte; left: 20vw;' id = \"loadMediaButton\" onClick = \"loadMedia('{$_GET["group"]}', {$nMedia}, 7)\"><b>Load more Media</b></span>";
 	
 }
 
@@ -42,16 +42,29 @@ function displayUserNormalFormat($mediaIds, $nMediaToLoad, $conn){
 	
 	$mediaArray = getArrayOfMedia($mediaIds, $conn);
 	$nMedia = 0;
+	
+	$loadNMoreMedia = 0;
 	for ($i = 0; $i < sizeof($mediaArray); $i++) {
 			
 		$temp_media = $mediaArray[$i];
-		echo displayUserMediaInNormalFormat($temp_media, $conn);
+		
+		$mediaToPrint = displayUserMediaInNormalFormat($temp_media, $conn);
+		
+		echo $mediaToPrint . "<br/><br/>" ;
+		
+		if ($mediaToPrint == "")
+			$loadNMoreMedia++;
 		
 		/*
 		echo $i;
 		echo $mediaArray[$i]["name"];
 		*/
 		$nMedia++;
+	}
+	
+	if (sizeof($mediaArray) - $loadNMoreMedia < 1){
+		echo "<p style = 'text-align:center; font-size: 4vh;'> You haven't uploaded anything yet! </p>
+			<p style = 'text-align:center; font-size: 4vh;'> Click on the 'UPLOAD' tab above to make a post </p></br></br>";
 	}
 	
 	
@@ -74,7 +87,7 @@ function displayMediaInNormalFormat($temp_media, $conn){
 		$temp_image = getImage($temp_media["id"], $conn);
 		
 				
-		if ( $temp_image["width"] > 10 && getimagesize($config["storage"]["images"] . $temp_media["id"] . '.jpg')[0] > 0 ) {
+		if ( $temp_image["width"] > 10 && @getimagesize($config["storage"]["images"] . $temp_media["id"] . '.jpg')[0] > 0 ) {
 			$imageId=$temp_image["id"];
 				
 			///finds scaled imaeg size
@@ -117,7 +130,18 @@ function displayMediaInNormalFormat($temp_media, $conn){
 			$returnText = $returnText . "<div id = 'textPostContent' >";
 			$returnText = $returnText . "<div id = 'textContent' >";
 			
-			$returnText = $returnText . "<div>" . $temp_text["mediaText"] . "</div>";
+			$textToDisplay = $temp_text["mediaText"];
+			
+			//this word count include html tags, which take up a lot more characters, so, yeah......
+			if(strlen($textToDisplay) > 1000){
+				$textToDisplay = trimContent($temp_text["mediaText"], 1000) . ".........<a href = '../MediaViewer/MediaViewer.php?mediaId={$temp_media["id"]}' target = '_blank' style = 'color: blue;' >(more)</a>";
+				//echo "to long: " . strlen($temp_text["mediaText"]);
+			}else{
+				
+				//echo "short enough: " . strlen($temp_text["mediaText"]);
+			}
+			
+			$returnText = $returnText . "<div style = 'width: 20vw;'>" . $textToDisplay . "</div>";
 			$returnText = $returnText . "</div>";
 			$returnText = $returnText . displayImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
 			
@@ -177,7 +201,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 		
 		$temp_image = getImage($temp_media["id"], $conn);
 				
-		if ( $temp_image["width"] > 10 && file_exists("../" . $config["storage"]["images"] . $temp_media["id"] . '.jpg') ) {
+		if ( $temp_image["width"] > 10 && @getimagesize($config["storage"]["images"] . $temp_media["id"] . '.jpg')[0] > 0 ) {
 			$imageId=$temp_image["id"];
 				
 			///finds scaled imaeg size
@@ -189,7 +213,7 @@ function displayMediaInLargeFormat($temp_media, $conn){
 			///outputs image
 			
 			$returnText = $returnText . "<div id='largeImageContent' style = 'left: 12.5vw;'> " .
-				"<img id='userImage' style='height: {$adj_img_height}vw; width: {$adj_img_width}vw; left: 0vw;' src='../{$config["storage"]["images"]}/{$temp_media["id"]}.jpg' />";
+				"<img id='userImage' style='height: {$adj_img_height}vw; width: {$adj_img_width}vw; left: 0vw;' src='{$config["storage"]["images"]}{$temp_media["id"]}.jpg' />";
 				//sets account link to user of the image 
 		$returnText = $returnText . displayImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
 			$returnText = $returnText . "</div>";
@@ -272,8 +296,9 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 	if ( $temp_media["name"] =="image"){
 		
 		$temp_image = getImage($temp_media["id"], $conn);
+		
 				
-		if ( $temp_image["width"] > 10 && file_exists("../" . $config["storage"]["images"] . $temp_media["id"] . '.jpg') ) {
+		if ( $temp_image["width"] > 10 && @getimagesize($config["storage"]["images"] . $temp_media["id"] . '.jpg')[0] > 0 ) {
 			$imageId=$temp_image["id"];
 				
 			///finds scaled imaeg size
@@ -285,7 +310,9 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			///outputs image
 			
 			$returnText = $returnText . "<div id='imageContent' > " .
-				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='../{$config["storage"]["images"]}{$temp_media["id"]}.jpg' />";
+				"<a href = '../MediaViewer/MediaViewer.php?mediaId={$temp_media["id"]}' target = '_blank' >" . 
+				"<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='{$config["storage"]["images"]}{$temp_media["id"]}.jpg' />" . 
+				"</a>";
 				//sets account link to user of the image 
 		$returnText = $returnText . displayUserImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
 			$returnText = $returnText . "</div>";
@@ -297,8 +324,11 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			
 			///echo comments into <p>
 
-			$returnText = $returnText . displayCommentWithoutAddComment($temp_media["id"], $_SESSION["currentId"], 0, $conn);
+			$returnText = $returnText . displayComment($temp_media["id"], $_SESSION["currentId"], 0, $conn);
 			$returnText = $returnText . "</div><br/>";	
+		}else{
+			//$returnText = $returnText . "<p>file doesn't exist: {$temp_media["id"]}  {$config["storage"]["images"]}{$temp_media["id"]}.jpg  ";	
+			
 		}
 		
 	}
@@ -311,7 +341,18 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			$returnText = $returnText . "<div id = 'textPostContent' >";
 			$returnText = $returnText . "<div id = 'textContent' >";
 			
-			$returnText = $returnText . "<div>" . $temp_text["mediaText"] . "</div>";
+			$textToDisplay = $temp_text["mediaText"];
+			
+			//this word count include html tags, which take up a lot more characters, so, yeah......
+			if(strlen($textToDisplay) > 1000){
+				$textToDisplay = trimContent($temp_text["mediaText"], 1000) . ".........<a href = '../MediaViewer/MediaViewer.php?mediaId={$temp_media["id"]}' target = '_blank' style = 'color: blue;' >(more)</a>";
+				//echo "to long: " . strlen($temp_text["mediaText"]);
+			}else{
+				
+				//echo "short enough: " . strlen($temp_text["mediaText"]);
+			}
+			
+			$returnText = $returnText . "<div style = 'width: 20vw;'>" . $textToDisplay . "</div>";
 			$returnText = $returnText . "</div>";
 			$returnText = $returnText . displayUserImageOptions($username["username"], $temp_media["id"], $_SESSION["currentId"], $conn);
 			
@@ -320,7 +361,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			
 			$returnText = $returnText . "</div>";	 
 			
-			$returnText = $returnText . displayCommentWithoutAddComment($temp_media["id"], $_SESSION["currentId"], 0, $conn);
+			$returnText = $returnText . displayComment($temp_media["id"], $_SESSION["currentId"], 0, $conn);
 			$returnText = $returnText . "</div>";
 		 }
 		
@@ -351,7 +392,7 @@ function displayUserMediaInNormalFormat($temp_media, $conn){
 			
 			
 			
-			$returnText = $returnText . displayCommentWithoutAddComment($temp_media["id"], $_SESSION["currentId"], 0, $conn);
+			$returnText = $returnText . displayComment($temp_media["id"], $_SESSION["currentId"], 0, $conn);
 			$returnText = $returnText . "</div>";
 		}
 		
@@ -438,6 +479,27 @@ function displayCritiques($mediaId, $conn){
 	
 	
 }
+
+///helper method that cuts string while keeping complete tags
+function trimContent( $str, $trimAt){
+	$nStartBracket = 0;
+	$nEndBracket = 0;
+	
+	$returnString = "";
+
+	for ($i = 0; $i < strlen($str) && $i < $trimAt || $nStartBracket != $nEndBracket ; $i++) {
+		
+		if ($str[$i] == "<")
+			$nStartBracket++;
+		else if($str[$i] == ">")
+			$nEndBracket++;
+		
+		$returnString = $returnString . $str[$i];
+	}
+	
+	return $returnString;
+}
+
 
 
 

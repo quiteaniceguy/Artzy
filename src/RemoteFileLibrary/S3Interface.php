@@ -3,7 +3,7 @@
 	
 	use Aws\S3\Exception\S3Exception;
 	
-	class FileUplaoder{
+	class S3Interface{
 		private $bucket;
 		private $s3;
 		
@@ -54,6 +54,25 @@
 				} 
 
 			}	
+			
+		}
+		
+		function deleteS3File($fileLocation){
+			
+			try{
+				
+				$this->s3->deleteObject([
+					'Bucket' => $this->bucket,
+					'Key' => $fileLocation,
+				]);
+				
+				return 0;
+				
+				
+	 
+			}catch(S3Exception $e) {
+				return 1;
+			} 
 			
 		}
 		

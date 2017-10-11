@@ -58,7 +58,7 @@
 		echo "<a id='headerElement' href='../UploadData/uploadMedia.php' >UPLOAD </a>";
 		echo "<a id='headerElement' href='../ProfilePage/profilePage.php'>PROFILE</a>";
 		echo "<a id='headerElement' href='../MessagesPage/UserMessages.php'>MESSAGES</a>";
-		echo "<a id='headerElement' href='../MessagesPage/UserMessages.php'>THE MURAL REVIEW</a>";
+		echo "<a id='headerElement' href='../TheMuralReview/TheReview.php'>THE MURAL REVIEW</a>";
 		
 		//echo "<a id='headerElement' href='../CritiqueViewer/CritiqueViewer.php'>CRITIQUES</a>";
 		

@@ -18,8 +18,10 @@ return [
 	],
 	
 	'storage' => [
-		"images" => "https://s3-us-west-2.amazonaws.com/themuralreviewbucket/UserData/ImagePost/",
-		"audio" => "https://s3-us-west-2.amazonaws.com/themuralreviewbucket/UserData/AudioPost/Audio/"
+		"images" => "http://d3velm5jeyhhne.cloudfront.net/UserData/ImagePost/",
+		"audio" => "http://d3velm5jeyhhne.cloudfront.net/UserData/AudioPost/Audio/",
+		"shortPImages" => "/UserData/ImagePost/",
+		"shortPAudio" => "/UserData/AudioPost/Audio/"
 		
 	
 	]

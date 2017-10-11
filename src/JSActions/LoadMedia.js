@@ -1,5 +1,6 @@
 function loadMedia(group, nMedia, nMediaToLoad){
-	
+	document.getElementById('loadMediaButton').innerHTML = "<b>loading...</b>";
+	//alert("loading");
 	var xmlhttp = new XMLHttpRequest();
 	
 	xmlhttp.onreadystatechange = function() {
@@ -16,6 +17,7 @@ function loadMedia(group, nMedia, nMediaToLoad){
 			document.getElementById('allPosts').innerHTML += response[0];
 			//alert(response[0]);
 			//alert(response[1]);	
+			document.getElementById('loadMediaButton').innerHTML = "<b>Load more</b>";
 		}
 	};
 	xmlhttp.open("GET", "../actions/LoadGroupMedia.php?group=" + group + "&nMedia=" + nMedia + "&nMediaToLoad=" + nMediaToLoad , true);

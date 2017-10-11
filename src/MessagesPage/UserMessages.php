@@ -58,6 +58,7 @@
 				
 			
 			}
+			/*
 			if($messages[$i]['mailbox'] == 'INReview' && $_GET["mailboxType"] == 'INReview'){
 				
 				
@@ -67,7 +68,7 @@
 				
 			
 			}
-			
+			*/
 			
 		}
 		
@@ -76,7 +77,7 @@
 		<a href = "UserMessages.php">all</a> |
 		<a href = "UserMessages.php?mailboxType=IN">in</a> |
 		<a href = "UserMessages.php?mailboxType=OUT">out</a> |
-		<a href = "UserMessages.php?mailboxType=INReview">critiques</a> 
+		<!--<a href = "UserMessages.php?mailboxType=INReview">critiques</a> -->
 	</div>
 </body>
 

@@ -57,3 +57,17 @@ textarea:focus  {
 	width: 100vw;
 	//background-color: red;
 }
+
+#loadingMessage{
+	position: absolute;
+	//background-color: red;
+	
+	
+	width: 100vw;
+	height: 3vh;
+	
+	top: 6.8vh;
+	
+	text-align: center;
+	font-size: 2vh;
+}

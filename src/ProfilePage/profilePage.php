@@ -15,7 +15,7 @@
 	
 	
 	<?php
-	
+		
 		$config = require('../../config/config.php');
 		
 		$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
@@ -28,6 +28,8 @@
 		include '../actions/DisplayMediaOptions.php';
 		include '../actions/DataRetriever.php';
 		include '../actions/DisplayMedia.php';
+		
+		include "../siteComponents/header.php";
 		
 		session_start();
 		error_reporting(E_ALL);
@@ -59,8 +61,7 @@
 			
 		
 		
-		echo 'hi';
-		include "../siteComponents/header.php";
+		
 	?>
 </body>
 

@@ -55,30 +55,67 @@
               }*/
   ?>
   <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-  <script type="text/javascript">bkLib.onDomLoaded(
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  
+  <script type="text/javascript">
+  bkLib.onDomLoaded(
 	function(){
 		new nicEditor({maxHeight: 500}).panelInstance('mediaText');
-	}
-  );</script>
+	});
+	
+	var uploaded = '<?php echo $_GET["uploaded"]?>';
+   if( uploaded == 1){
+	   alert("uploaded");
+   }
+   if( uploaded == 2){
+	   alert("upload failed");
+   }
+  
+  
+  $(document).ready(function(){
+	  
+	  $("#postImage").click(function(){
+		  $("#loadingMessage").html("uploading....");
+		  $(".submitButton").hide();
+		  $("#imageForm").submit();
+	  });
+	   $("#postText").click(function(){
+		  $("#loadingMessage").html("uploading....");
+		  $(".submitButton").hide();
+		  $("#textForm").submit();
+	  });
+	   $("#postAudio").click(function(){
+		
+		  $("#loadingMessage").html("uploading....");
+		  $(".submitButton").hide();
+		  $("#audioForm").submit();
+	  });
+  });
+  
+  
+  
+  </script>
   
   <div id="imageUpload">
 	  <b style = 'font-size: 4vh;'>IMAGE</b><br/><br/><br/>
-	  <form action="uploadImageAction.php" method="post" enctype="multipart/form-data">
+	  <form action="uploadImageAction.php" method="post" enctype="multipart/form-data" id = "imageForm">
 		IMAGE NAME:<br><textarea type="text" name="imageName"  class="upInput" style = "width: 20vw; height: 1vw;"></textarea><br/>
 		GROUPS:<br><textarea type="text" name="groups" style = "width: 20vw; height: 2vw;" class="upInput">general visualarts</textarea><br/><br/>
 		<input type="file" name="uploadedImage" id="uploadedImage"/><br/><br/><br/><br/>
-		<input type="submit" value="post"/><br/>
+		<button id = "postImage" class = "submitButton" >upload</button>
+		<!-- <input type="submit" value="post" id = "postButton"/><br/>  -->
 		
 	  </form>
    </div>
    
    <div id="textUpload">
 	  <b style = 'font-size: 4vh;'>TEXT</b><br/><br/><br/>
-	  <form action="uploadTextAction.php" method="post" enctype="multipart/form-data">
+	  <form action="uploadTextAction.php" method="post" enctype="multipart/form-data" id = "textForm">
 	    TITLE:<br><textarea type="text" name="title" style = "width: 20vw; height: 1vw;"" class="upInput"></textarea><br/>
 		TEXT:<br><textarea type="text" name="mediaText"  class="upInput" id="mediaText" style = "width: 30vw; height: 50vh;" ></textarea><br/>
 		GROUPS:<br><textarea type="text" name="groups" rows="1" cols="60" class="upInput">general writing</textarea><br/><br/>
-		<input type="submit" value="post"/><br/>
+		<button id = "postText" class = "submitButton" >upload</button>
 		
 	  </form>
    </div>
@@ -95,15 +132,17 @@
    -->
    <div id="audioUpload">
 	  <b style = 'font-size: 4vh;'>AUDIO</b><br/><br/><br/>
-	  <form action="uploadAudioAction.php" method="post" enctype="multipart/form-data">
+	  <form action="uploadAudioAction.php" method="post" enctype="multipart/form-data" id = "audioForm" >
 		AUDIO NAME:<br><textarea type="text" name="audioName" style = "width: 20vw; height: 1vw;" class="upInput"></textarea><br/>
 		GROUPS:<br><textarea type="text" name="groups" style = "width: 20vw; height: 2vw;" class="upInput">general music</textarea><br/><br/>
 		<!--IMAGE: <input type="file" name="uploadedImage" id="uploadedImage"/><br/>-->
 		AUDIO: <input type="file" name="uploadedAudio" id="uploadedAudio"/><br/><br/><br/><br/><br/>
-		<input type="submit" value="post"/><br/>
+		<button id = "postAudio" class = "submitButton" >upload</button>
 		
 	  </form>
    </div>
+   
+   <div id = "loadingMessage"></div>
    
   <div id = "footer">*You retain ownership of all content you submit, post, display, or otherwise make available on the service, and at any time may request its removal </div>
   <?php include "../siteComponents/header.php"; ?>

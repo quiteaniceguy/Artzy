@@ -1,19 +1,33 @@
 <?php
+	//this file should use a class if you wanna fix it
 	include_once "DataRetriever.php";
+	
+	require "../../config/S3Connect.php";
+	require "../RemoteFileLibrary/S3Interface.php";
+
+	$s3 = require "../../config/S3Connect.php";
+	$config = require('../../config/config.php');
+	
+	$fileRemover = new S3Interface($config['s3']['bucket'], $s3);
+	
 	function deleteMedia($mediaId, $conn){
+		global $fileRemover;
+		global $config;
 		
+		
+		$fileRemover->deleteS3File("windows.jpg");
 		///get mediaType
 		$media = getMedia($mediaId, $conn);
 		
 		//return $mediaId;
 		
-		if ( deleteComments($mediaId, $conn) && deleteLikes($mediaId, $conn) ){
+		if ( !deleteComments($mediaId, $conn) && !deleteLikes($mediaId, $conn) ){
 			return "3";
 		}
 		
 		//image
 		if ($media["mediaType"] == 1){
-			deleteImage($mediaId, $conn);
+			deleteImage($mediaId, $conn, $config['storage']['shortPImages'], $fileRemover);
 			//delete from table_image and image file
 		}
 		
@@ -24,7 +38,7 @@
 		
 		//audi
 		if ($media["mediaType"] == 4) {
-			 deleteAudio($mediaId, $conn);
+			 deleteAudio($mediaId, $conn, $config['storage']['shortPAudio'], $fileRemover);
 		}		
 		//delete group group links and from table_media
 		deleteGroupLinks($mediaId, $conn);
@@ -55,11 +69,10 @@
 		return $textMedia["textId"];
 	}
 	
-	function deleteAudio($mediaId, $conn){
+	function deleteAudio($mediaId, $conn, $fileLocation, $fileRemover){
+		$fileRemover->deleteS3File($fileLocation . $mediaId . ".mp3");
+	
 		$sql = "DELETE FROM table_audio WHERE mediaId = {$mediaId}";
-		
-		unlink("../../userData/audioPost/audio/{$mediaId}.mp3");
-		
 		if ($conn->query($sql)) {
 			return 0;
 		}
@@ -67,14 +80,16 @@
 		return 1;
 	}
 	
-	function deleteImage($mediaId, $conn){
+	function deleteImage($mediaId, $conn, $fileLocation, $fileRemover){
+		
+		$fileRemover->deleteS3File($fileLocation . $mediaId . ".jpg");
+	
 		$sql = "DELETE FROM table_images WHERE mediaId = {$mediaId}";
-		unlink("../../images/{$mediaId}.jpg");
 		if ($conn->query($sql)) {
 			return 0;
 		}
 		
-		return "failed";
+		return 1;
 	}
 	
 	function deleteGroupLinks($mediaId, $conn){
@@ -94,7 +109,7 @@
 		
 		$conn->query($sql);
 		
-		return 0;
+		return true;
 	}
 	
 	function deleteLikes($mediaId, $conn){
@@ -103,7 +118,7 @@
 		
 		$conn->query($sql);
 		
-		return 0;
+		return true;
 	}
 
 ?>

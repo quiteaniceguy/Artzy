@@ -2,7 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+  <?php
+		echo $_COOKIE["ARTZY_USERNAME"];
+		echo $_COOKIE["ARTZY_PASSWORD"];
+		if( $_COOKIE["ARTZY_USERNAME"] != "" && $_COOKIE["ARTZY_PASSWORD"] != "")
+			header("Location: LoginAction.php?username={$_COOKIE["ARTZY_USERNAME"]}&password={$_COOKIE["ARTZY_PASSWORD"]} ");
+  
+  ?>
   <link rel="icon" href="../../favicon.PNG" type="image/png">
   
 	<title>Artzy</title>
@@ -11,15 +17,23 @@
   <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script>
+  /*
+	var username = '<?php echo $_COOKIE["ARTZY_USERNAME"];?>';
+	var password = '<?php echo $_COOKIE["ARTZY_PASSWORD"];?>';
+	
+	
+	
     $(document).ready(function(){
-    
+		$.post('LoginAction.php', { username: username, password: password }, function(result) {
+			alert('successfully posted key1=value1&key2=value2 to foo.php');
 			
-		
+		});
     });
+	*/
   </script>
 </head>
 <body>
-  <img id='backImage' src = '../Backgrounds/stageflipped.png' />
+  
   <div id="title">
     the mural.
   </div>
@@ -39,6 +53,8 @@
 			?>
 		</div>
   </div>
+ 
+  <div  id = 'titleQuote'><b>A place for students to share art</b></div>
 	<div id="loginFooter">
 		<div id="copyrightInfo">
 			<!-- TM + © Artzy. All rights reserved. -->

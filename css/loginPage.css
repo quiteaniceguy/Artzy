@@ -168,6 +168,19 @@ form	{
 	right: 0px;
 	margin-right: 2vw
 }
+#titleQuote{
+	position: fixed;
+	
+	width: 100vw;
+	
+	
+	
+	top: 80vh;
+	
+	font-size: 1.4vw;
+	font-family: 'Josefin Sans', sans-serif;
+	text-align: center;
+}
 
 
 /**/

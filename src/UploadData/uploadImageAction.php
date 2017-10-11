@@ -3,13 +3,18 @@
   
  
   
-  require "../RemoteFileLibrary/FileUploader.php";
-  require "../../config/S3Connect.php";
+  require "../RemoteFileLibrary/S3Interface.php";
+  $s3 = require "../../config/S3Connect.php";
 
   $config = require('../../config/config.php');
-  $fileUploader = new FileUplaoder($config['s3']['bucket'], $s3);
+  $fileUploader = new S3Interface($config['s3']['bucket'], $s3);
+  
+  $fileName = $_FILES["uploadedImage"]["name"];
+  
+  $extension = explode('.', $fileName);
+  $extension = strtolower(end($extension));
 
-  if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL){
+  if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL && $extension == 'jpg'){
 	  
 	  //connects to server
 	  
@@ -78,12 +83,12 @@
 	  }else{
 		die("file move failed");
 	  }
-	  
+	  header('Location: uploadMedia.php?uploaded=1');
   }else{
-	  echo "must be logged in to upload file";
+	 header('Location: uploadMedia.php?uploaded=2');
   }
   
-  include "../siteComponents/header.php";
+ 
   
 
 

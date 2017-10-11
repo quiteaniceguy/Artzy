@@ -6,7 +6,7 @@
 </head>
 <body>
 	<?php
-		
+		//die("what " . $_GET["username"] . $_GET["password"]);
 		$user=$_GET["username"];
 		$pass=$_GET["password"];
 		
@@ -65,6 +65,9 @@
 				$_SESSION["currentUser"]=$user;
 				$_SESSION["currentId"]=$result["id"];
 				$_SESSION["currentPass"]=$pass;
+				
+				setcookie("ARTZY_USERNAME", $user, time() + (86400 * 30), "/");
+				setcookie("ARTZY_PASSWORD", $pass, time() + (86400 * 30), "/");
 				
 				//header( 'Location: ../ProfilePage/profilePage.php' );
 				header( 'Location: ../Content/displayGroup.php?group=general' );

@@ -86,6 +86,7 @@
 	  $uploadDir = "/var/www/html/artzy/UserData/profilePictures/" . $userId . ".jpg";
 	  
 	  //check if server has permissions to write
+	  /*
 	  if( !( is_writable("/var/www/html/artzy/UserData/profilePictures")) ){
 		  die("not writable");
 	  }
@@ -95,7 +96,7 @@
 	  }else{
 		die("it didn't work" . $_FILES["uploadFile"]["error"]);				
 	  }
-		
+	*/	
 	  ////end of uploaded profile picture
 	  
 	  

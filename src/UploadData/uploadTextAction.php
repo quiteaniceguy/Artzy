@@ -87,7 +87,7 @@
 	  echo "must be logged in to upload file";
   }
   
-  include "../siteComponents/header.php";
+  header('Location: uploadMedia.php?uploaded=1');
   
 
 

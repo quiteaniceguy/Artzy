@@ -5,7 +5,7 @@
 
     $config = require('config.php');
     
-    $s3 = S3Client::factory([
+    return S3Client::factory([
         'key' => $config['s3']['key'],
         'secret' => $config['s3']['secret']
     ]);

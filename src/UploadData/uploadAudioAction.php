@@ -6,14 +6,19 @@
   ini_set('display_errors',1);
   error_reporting(E_ALL);
   
-  require "../RemoteFileLibrary/FileUploader.php";
+  require "../RemoteFileLibrary/S3Interface.php";
   
-  require "../../config/S3Connect.php";
+  $s3 = require "../../config/S3Connect.php";
 
   $config = require('../../config/config.php');
-  $fileUploader = new FileUplaoder($config['s3']['bucket'], $s3);
+  $fileUploader = new S3Interface($config['s3']['bucket'], $s3);
   
-  if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL){
+  $fileName = $_FILES["uploadedImage"]["name"];
+  
+  $extension = explode('.', $fileName);
+  $extension = strtolower(end($extension));
+  
+  if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL && $extension == 'mp3'){
 	  
 	  //connects to server
 	  $config = require('../../config/config.php');
@@ -98,12 +103,15 @@
 		echo $_FILES["uploadedAudio"]["error"];
 		die("audio file move failed");
 	  }
-	  
+	  header('Location: uploadMedia.php?uploaded=1');
   }else{
+	  header('Location: uploadMedia.php?uploaded=2');
 	  echo "must be logged in to upload file";
   }
   
-  include "../siteComponents/header.php";
+  
+  //include "../siteComponents/header.php"; 
+ 
   
 
 
