@@ -6,8 +6,8 @@
 </head>
 <body>
 	<?php
-		die("what " . $_GET["username"] . $_GET["password"]);
-		/*
+		//die("what " . $_GET["username"] . $_GET["password"]);
+		
 		$user=$_GET["username"];
 		$pass=$_GET["password"];
 		
@@ -25,8 +25,8 @@
 		}catch(PDOException $e){
 			echo "connection established" . $e->getMessage();
 		}
-		
-		
+		echo "here";
+		/*
 		///finds account with matching login info
 		$sql = "SELECT * FROM db_users WHERE username='{$user}' AND password='{$pass}' ";
 		
