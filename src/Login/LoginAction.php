@@ -11,7 +11,7 @@
 		$pass=$_GET["password"];
 		
 		
-		include '../ConnectionLibrary/ConnectoToDB.php';
+		
 		$config = require('../../config/config.php');
 		$conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
 		
@@ -66,10 +66,10 @@
 				$_SESSION["currentUser"]=$user;
 				$_SESSION["currentId"]=$result["id"];
 				$_SESSION["currentPass"]=$pass;
-				
+				/*
 				setcookie("ARTZY_USERNAME", $user, time() + (86400 * 30), "/");
 				setcookie("ARTZY_PASSWORD", $pass, time() + (86400 * 30), "/");
-				
+				*/
 				//header( 'Location: ../ProfilePage/profilePage.php' );
 				header( 'Location: ../Content/displayGroup.php?group=general' );
 			}else{
@@ -78,6 +78,7 @@
 			}
 			
 		}else{
+			/*
 			if($_GET["cookie"] == 1){
 				$_SESSION["cookie"] = "1" ;
 				header('Location: Login.php');
@@ -87,7 +88,7 @@
 				header('Location: Login.php');
 				echo "no user found";
 			}
-			
+			*/
 			
 		}
 		
