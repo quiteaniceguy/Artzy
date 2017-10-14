@@ -14,7 +14,7 @@
 		
 		
 		$config = require('../../config/config.php');
-		$conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
+		$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
 		
 		echo "here";
 		/*
