@@ -16,8 +16,8 @@
 		$config = require('../../config/config.php');
 		$conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
 		
-		
-		
+		echo "here";
+		/*
 		try{
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			echo "connection success";
@@ -25,8 +25,8 @@
 		}catch(PDOException $e){
 			echo "connection established" . $e->getMessage();
 		}
-		echo "here";
-		/*
+		
+		
 		///finds account with matching login info
 		$sql = "SELECT * FROM db_users WHERE username='{$user}' AND password='{$pass}' ";
 		
