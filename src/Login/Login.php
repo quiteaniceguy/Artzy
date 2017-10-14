@@ -3,10 +3,12 @@
 <html>
 <head>
   <?php
-		echo $_COOKIE["ARTZY_USERNAME"];
-		echo $_COOKIE["ARTZY_PASSWORD"];
-		if( $_COOKIE["ARTZY_USERNAME"] != "" && $_COOKIE["ARTZY_PASSWORD"] != "")
-			header("Location: LoginAction.php?username={$_COOKIE["ARTZY_USERNAME"]}&password={$_COOKIE["ARTZY_PASSWORD"]} ");
+		//echo $_COOKIE["ARTZY_USERNAME"];
+		//echo $_COOKIE["ARTZY_PASSWORD"];
+		if( $_COOKIE["ARTZY_USERNAME"] != "" && $_COOKIE["ARTZY_PASSWORD"] != "" && $_SESSION["cookie"] != "1"){
+			header("Location: LoginAction.php?username={$_COOKIE["ARTZY_USERNAME"]}&password={$_COOKIE["ARTZY_PASSWORD"]}&cookie=1 ");
+		}
+			
   
   ?>
   <link rel="icon" href="../../favicon.PNG" type="image/png">

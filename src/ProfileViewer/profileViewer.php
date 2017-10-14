@@ -83,6 +83,8 @@
 		include '../actions/DataRetriever.php';
 		include '../actions/DisplayMedia.php';
 		
+		include "../siteComponents/SessionChecker.php";
+		
 		
 		
 		include "../siteComponents/header.php";

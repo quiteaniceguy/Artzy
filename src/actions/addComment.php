@@ -26,7 +26,7 @@
 	$currUsername = getUsername($_POST["userId"], $conn);
 	$recUsername = getUsername( getMedia($_POST["mediaId"], $conn)["userId"], $conn)["username"];
 	
-	sendMessageType($currUsername, $_POST["userId"], $recUsername, $_POST["comment"], "OUTComment", "INComment", 0, $conn);
+	sendMessageType($currUsername["username"], $_POST["userId"], $recUsername, $_POST["comment"], "OUTComment", "INComment", 0, $conn);
 	
 	
 	

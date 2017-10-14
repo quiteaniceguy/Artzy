@@ -145,7 +145,10 @@
    <div id = "loadingMessage"></div>
    
   <div id = "footer">*You retain ownership of all content you submit, post, display, or otherwise make available on the service, and at any time may request its removal </div>
-  <?php include "../siteComponents/header.php"; ?>
+  <?php 
+  include "../siteComponents/SessionChecker.php";
+  include "../siteComponents/header.php"; 
+  ?>
 </body>
 
 </html>

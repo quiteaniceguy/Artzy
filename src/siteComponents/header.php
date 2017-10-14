@@ -51,6 +51,8 @@
   
   
   <?php
+	error_reporting(0);
+	
 	if($_SESSION["currentId"]!=NULL){
 		echo "<div id='logo'><span style = 'z-index: 20;' onclick = 'testFunc()'>the mural.</span></div> ";
 		echo "<div id='searchDiv'><input id='searchBar' class='searchBar' type='text' name ='search' placeholder='Search For Groups(writing, music, visualarts, etc...)' onkeyup = 'showResult(this.value)' /></div> ";
@@ -67,8 +69,8 @@
 
 	}else{
 		//echo "<a id='headerElement' href='../../index.php'>HOME</a>";
-		//echo "<a id='headerElement' href='../Login/Login.php'>LOGIN</a>";
-		//echo "<a id='headerElement' href='../createAcc/createAcc.php'> JOIN</a>" ;
+		echo "<a id='headerElement' href='../Login/Login.php'>LOGIN</a>";
+		echo "<a id='headerElement' href='../CreateAcc/createAcc.php'> JOIN</a>" ;
 		
 	}
   ?>

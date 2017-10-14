@@ -17,6 +17,7 @@
 		
 		require "../siteComponents/header.php";
 		include "../siteComponents/MessageModal.php";
+		include "../siteComponents/SessionChecker.php";
 		
 		$config = require('../../config/config.php');
 		

@@ -13,6 +13,7 @@
 	
 	
 	<?php
+		session_start();
 		$config = require('../../config/config.php');
 		
 		$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
@@ -25,6 +26,11 @@
 		include '../actions/DisplayMediaOptions.php';
 		include '../actions/DataRetriever.php';
 		include '../actions/DisplayMedia.php';
+		
+		include "../siteComponents/SessionChecker.php";
+		include "../siteComponents/header.php";
+		include "../siteComponents/MessageModal.php";
+		
 		
 		session_start();
 		error_reporting(E_ALL);
@@ -53,8 +59,7 @@
 
 			
 		
-		include "../siteComponents/header.php";
-		include "../siteComponents/MessageModal.php";
+		
 	?>
 </body>
 

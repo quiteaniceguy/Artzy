@@ -12,7 +12,8 @@
 		
 		
 		include '../ConnectionLibrary/ConnectoToDB.php';
-		$conn = new PDO("mysql:host={$SERVER_NAME};dbname={$SERVER_DB_NAME}", $SERVER_USERNAME, $SERVER_PASSWORD);
+		$config = require('../../config/config.php');
+		$conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
 		
 		
 		
@@ -77,11 +78,17 @@
 			}
 			
 		}else{
-			echo 'null';
+			if($_GET["cookie"] == 1){
+				$_SESSION["cookie"] = "1" ;
+				header('Location: Login.php');
+				
+			}else{
+				$_SESSION["m_Login"] = "password or username incorrect" ;
+				header('Location: Login.php');
+				echo "no user found";
+			}
 			
-			$_SESSION["m_Login"] = "password or username incorrect" ;
-			header('Location: Login.php');
-			echo "no user found";
+			
 		}
 		
 	?>

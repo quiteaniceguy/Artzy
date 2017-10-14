@@ -10,10 +10,10 @@ return [
 	
 	'mysql' => [
 	
-		'servername' => "localhost",
-		'username' => "root",
-		'password' => "",
-		'dbName' => "db_artzytest"
+		'servername' => "themuraldbid.cxqmpjl9bxm3.us-west-2.rds.amazonaws.com",
+		'username' => "octopoco",
+		'password' => "Kangeroo2",
+		'dbName' => "db_themural"
 	
 	],
 	

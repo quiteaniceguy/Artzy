@@ -30,6 +30,7 @@
 		include '../actions/DisplayMedia.php';
 		
 		include "../siteComponents/header.php";
+		include "../siteComponents/SessionChecker.php";
 		
 		session_start();
 		error_reporting(E_ALL);
