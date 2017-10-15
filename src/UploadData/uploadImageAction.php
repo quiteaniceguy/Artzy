@@ -77,11 +77,11 @@
 	  //uploads image
 	 
 	 
-	  
-	  if ( $fileUploader->uploadS3File($_FILES, "/var/www/html/artzy/src/RemoteFileLibrary/TempFiles/", "UserData/ImagePost/", "uploadedImage", $mediaId . ".jpg") == 0){
+	  $uploadSuccess = $fileUploader->uploadS3File($_FILES, "/var/www/html/Artzy/src/RemoteFileLibrary/TempFiles/", "UserData/ImagePost/", "uploadedImage", $mediaId . ".jpg");
+	  if ( $uploadSuccess == 0){
 		echo "file moved";
 	  }else{
-		die("file move failed");
+		die("file move failed: ". $uploadSuccess);
 	  }
 	  header('Location: uploadMedia.php?uploaded=1');
   }else{

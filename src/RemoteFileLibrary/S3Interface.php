@@ -26,8 +26,11 @@
 				$extension = strtolower(end($extension));
 				
 				//check if writable
-				if ( !(is_dir($tempUploadDir) && is_writable($tempUploadDir)) ) {
+				if ( !is_dir($tempUploadDir)  ) {
 					return 1;
+				}
+				if ( !is_writable($tempUploadDir) ) {
+					return 4;
 				}
 				
 				//move file
