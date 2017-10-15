@@ -10,7 +10,7 @@ return [
 	
 	'mysql' => [
 	
-		'servername' => "themuraldbid.cxqmpjl9bxm3.us-west-2.rds.amazonaws.com",
+		'servername' => "themuradbid.cxqmpjl9bxm3.us-west-2.rds.amazonaws.com",
 		'username' => "octopoco",
 		'password' => "Kangeroo2",
 		'dbName' => "db_themural"

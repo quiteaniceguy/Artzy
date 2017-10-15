@@ -16,8 +16,8 @@
 		$config = require('../../config/config.php');
 		$conn = new mysqli($config["mysql"]["servername"], $config["mysql"]["username"], $config["mysql"]["password"], $config["mysql"]["dbName"]);
 		
-		echo "here";
-		/*
+	
+		
 		try{
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			echo "connection success";
@@ -91,7 +91,7 @@
 			
 			
 		}
-		*/
+		
 	?>
 </body>
 </html>
