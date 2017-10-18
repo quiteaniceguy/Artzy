@@ -7,7 +7,7 @@
   $s3 = require "../../config/S3Connect.php";
 
   $config = require('../../config/config.php');
-  $fileUploader = new S3Interface($config['s3']['bucket'], $s3);
+  //$fileUploader = new S3Interface($config['s3']['bucket'], $s3);
   
   $fileName = $_FILES["uploadedImage"]["name"];
   
@@ -24,7 +24,7 @@
 	  if(!$conn){
 		die("connection to server failed");
 	  }
-	  
+/*	  
 	  //gets image data
 	  $imagetemp=$_FILES["uploadedImage"]["tmp_name"];
 	  list($imageWidth, $imageHeight) = getimagesize($imagetemp);
@@ -73,16 +73,16 @@
 	  }
 	  
 
-	 
+*/	 
 	  //uploads image
 	 
-	 
+/*	 
 	  $uploadSuccess = $fileUploader->uploadS3File($_FILES, "/var/www/html/Artzy/src/RemoteFileLibrary/TempFiles/", "UserData/ImagePost/", "uploadedImage", $mediaId . ".jpg");
 	  if ( $uploadSuccess == 0){
 		echo "file moved";
 	  }else{
 		die("file move failed: ". $uploadSuccess);
-	  }
+	  }*/
 	  header('Location: uploadMedia.php?uploaded=1');
   }else{
 	 header('Location: uploadMedia.php?uploaded=2');
