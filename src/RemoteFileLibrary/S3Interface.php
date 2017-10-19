@@ -53,7 +53,7 @@
 					
 		 
 				}catch(S3Exception $e) {
-					return 3;
+					return $e->getMessage();
 				} 
 
 			}	

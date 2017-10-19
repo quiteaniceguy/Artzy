@@ -5,7 +5,9 @@ return [
 
 		'secret' => 'I0FJqe5JtCoxvAZdu3ISXjurtzL4WYXyyESln3b8',
 		'key' => 'AKIAJ3IJ4VGWSKFWD4SQ',
-        'bucket' => 'themuralreviewbucket'
+        'bucket' => 'themuralreviewbucket',
+		'version' => '2006-03-01',
+		'region' => 'us-west-2'
     ],
 	
 	'mysql' => [
