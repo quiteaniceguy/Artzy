@@ -13,7 +13,7 @@
   ?>
   <link rel="icon" href="../../favicon.PNG" type="image/png">
   
-	<title>Artzy</title>
+	<title>The Mural</title>
   <link rel="stylesheet" href="../../css/loginPage.css">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Megrim" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
@@ -56,7 +56,7 @@
 		</div>
   </div>
  
-  <div  id = 'titleQuote'><b>A place for students to share art</b></div>
+  <div  id = 'titleQuote'><b>A place for students to share and get feedback on art, writing, and music</b><br/><br/>still in beta</div>
 	<div id="loginFooter">
 		<div id="copyrightInfo">
 			<!-- TM + © Artzy. All rights reserved. -->

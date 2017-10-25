@@ -14,8 +14,10 @@
 		$s3 = S3Client::factory([
 			'version' => $config['s3']['version'],
 			'region' => $config['s3']['region'],
-			'key' => $config['s3']['key'],
-			'secret' => $config['s3']['secret']
+			'credentials' => array(
+				'key' => $config['s3']['key'],
+				'secret' => $config['s3']['secret']
+			)
 
 		]);
 		return $s3; 

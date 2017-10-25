@@ -1,0 +1,8 @@
+#contact{
+	position: fixed;
+	top: 95vh;
+	left: 80vw;
+	height: 5vh;
+	opacity: 1;
+	//background-color: red;
+}

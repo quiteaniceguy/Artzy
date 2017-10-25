@@ -32,7 +32,7 @@ function displayNormalFormatWithLoadButton($mediaIds, $nMediaToLoad, $conn){
 	echo "</div>";//allPosts
 	
 	///create load more media button
-	echo "<span  style = 'position:absoulte; left: 20vw;' id = \"loadMediaButton\" onClick = \"loadMedia('{$_GET["group"]}', {$nMedia}, 7)\"><b>Load more Media</b></span>";
+	echo "<span  style = 'position:absoulte; left: 20vw; margin-left: 45vw;' id = \"loadMediaButton\" onClick = \"loadMedia('{$_GET["group"]}', {$nMedia}, 7)\"><b>Load more media</b></span>";
 	
 }
 

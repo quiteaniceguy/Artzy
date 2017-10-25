@@ -16,14 +16,14 @@
 
 #title	{
 	position: fixed;
-	top: 0px;
-	font-family: 'Megrim', cursive;
-  font-size: 10vw;
-  width: 30vw;
+	top: 15vh;
+	font-family: 'Lora', serif;
+  font-size: 5vw;
+  width: 42.5vw;
   height: 10vh;
-	padding-top: 10vh;
-  padding-bottom: 10vh;
-	margin-left: 7vw;
+	
+  
+
 	text-align: center;
   color: black;
 	text-shadow: 10px 10px rgba(0, 0, 0, .05);
@@ -43,12 +43,12 @@
 
 #acc	{
 	position: fixed;
-	top: 28vh;
+	top: 20vh;
 	font-family: 'Josefin Sans', sans-serif;
   font-size: 3vw;
   width: 65vw;
   height: 10vh;
-	left: 0vw;
+	left: 5vw;
 	text-align: center;
   color: black;
 }

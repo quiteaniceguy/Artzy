@@ -3,19 +3,20 @@
 <html>
   <head>
     <link rel="icon" href="../../favicon.PNG" type="image/png">
-    <title>Artzy</title>
+    <title>The Mural</title>
     <meta charset="utf-8">
 		<link rel="stylesheet" href="../../css/createAcc.css">
 		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Megrim" rel="stylesheet">
+		<link href = "https://fonts.googleapis.com/css?family=Lora" rel = "stylesheet">
   </head>
 	
   <body>
 		
 		<div id = 'back'> <img id='backImage' src = '../../Backgrounds/stageflipped.jpg' /> </div>
 		<div id="leftContainer">
-			<div id="createYour">Create your</div>
-			<div id="title">Artzy</div>
-			<div id="acc">Account</div>
+			<div id="createYour"> </div>
+			<div id="title">the mural.</div>
+			<div id="acc">join</div>
 			<form action="createAccAction.php" method="post" enctype="multipart/form-data">
 				<br/>First Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; Last Name<br><textarea type="text" name="fName" rows="1" cols="28"></textarea> <textarea type="text" name="lName" rows="1" cols="28"></textarea>
 				<br/>Username <br/><textarea type="text" name="username" rows="1" cols="60"></textarea>

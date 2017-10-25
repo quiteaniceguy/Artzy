@@ -9,9 +9,9 @@
 		die("connection to server failed");
 	}
 	
-	if($conn->connect_error){
-		die("connection error");
-	}
+
+
+
 	
 	//$sql = "INSERT INTO table_comments(comment, userId, mediaId) VALUES('{$_GET["comment"]}', '{$_GET["userId"]}' , '{$_GET["mediaId"]}' )" ;
 	$sql = "INSERT INTO table_comments(comment, userId, mediaId) VALUES(?, ?, ?)" ;

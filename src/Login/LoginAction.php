@@ -74,7 +74,7 @@
 				//header( 'Location: ../ProfilePage/profilePage.php' );
 				header( 'Location: ../Content/displayGroup.php?group=general' );
 			}else{
-				$_SESSION["m_Login"]="Unverified Account. Check your email to verify.";
+				$_SESSION["m_Login"]="Unverified Account. Check your email to verify(make sure to check your SPAM folder).";
 				header('Location: Login.php');
 			}
 			

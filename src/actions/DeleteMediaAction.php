@@ -1,7 +1,7 @@
 <?php
 	
 	include_once 'DataRemover.php';
-	require '../ConnectionLibrary/ConnectoToDB.php';
+
 	
 	$config = require('../../config/config.php');
 		

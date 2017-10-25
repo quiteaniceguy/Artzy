@@ -10,7 +10,8 @@ function deleteMedia(mediaId){
 				
 			//returns response data as string
 			//document.getElementById("comments"+mediaId).innerHTML = this.responseText + document.getElementById("comments"+mediaId).innerHTML;
-			alert(this.responseText);
+			if(this.responseText == "0")
+				alert("Media deleted");
 				
 				
 				

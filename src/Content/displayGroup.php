@@ -2,9 +2,10 @@
 <html>
 
 <head>
-	<title> title </title>
+	<title> The Mural</title>
 	<link rel="stylesheet" href="../../css/profilePage.css">
 	<link rel="stylesheet" href="../../css/imageOptions.css">
+	<link rel = "stylesheet" href = "../../css/Contact.css">
 </head>
 <body id="bod">
 	<script src = '../JSActions/addComment.js'></script>
@@ -30,6 +31,7 @@
 		include "../siteComponents/SessionChecker.php";
 		include "../siteComponents/header.php";
 		include "../siteComponents/MessageModal.php";
+		include "../siteComponents/Contact.php";
 		
 		
 		session_start();

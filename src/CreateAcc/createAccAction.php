@@ -6,14 +6,17 @@
 </head>
 <body>
   <?php
+
 	error_reporting(E_ALL);
-	require "PHPMailer/PHPMailerAutoload.php";
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+	require "vendor/autoload.php";
 
     try{
 		///uploads user info to database
         $config = require('../../config/config.php');
 	    $conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
-      
+
         if($conn->connect_error){
 			die("failed");
 		}
@@ -43,7 +46,7 @@
 			
 		
 		
-		
+
 		//check if all of form is filled out
 		$formFilledOut = 
 			is_string($_POST["username"]) &&
@@ -77,7 +80,7 @@
       //insert data into database
 	  $sql="INSERT INTO db_users(username, password, email, about, school, phoneNumber, age, fName, lName, verificationCode, isActivated)
       VALUES( :username, :password, :email, :about, :school, :phoneNumber, :age, :fName, :lName, :verificationCode, '0')  "; 
-	  echo "here 1";
+
 	  try{
 		  $stmt = $conn->prepare($sql);
 		  $stmt->bindParam(':username' , $_POST["username"]);
@@ -97,7 +100,7 @@
 	  }catch(Exception $ex){
 		  die("Exception: " . $ex);
 	  }
-	  echo "here 2";
+
 	  /*
       if($conn->query($sql)==TRUE){
 			echo " account created!";
@@ -128,10 +131,10 @@
 	  ////end of uploaded profile picture
 	  
 	  
-	  
+
 	  $last_id = $conn->lastInsertId();
 	  sendEmail($verificationCode, $last_id, $_POST["email"]);
-      
+      $_SESSION["m_Login"] = "Check your emaily to verify your account(make sure to check your SPAM folder)";
       header( 'Location: ../Login/Login.php' );
     }
     catch(Exception $e){
@@ -156,11 +159,11 @@
 	$mail->Username   = "chefelthomas@gmail.com";  // username
 	$mail->Password   = "Kangeroo2";            // password
 
-	$mail->SetFrom('chefelthomas@gmail.com', 'Test');
+	$mail->SetFrom('chefelthomas@gmail.com', 'Verify your Mural Account');
 
-	$mail->Subject    = "I hope this works!";
+	$mail->Subject    = "Join The Mural community";
 
-	$mail->MsgHTML("<a href='73.164.242.212/artzy/src/Verify/Verify.php?code={$veri}&userid={$id}' >" . "Click here to verify your account!" . "</a>");
+	$mail->MsgHTML("<a href='54.191.45.173/Artzy/src/Verify/Verify.php?code={$veri}&userid={$id}' >" . "Click here to verify your account!" . "</a>");
 	
 	$address = $email;
 	$mail->AddAddress($address, "Test");

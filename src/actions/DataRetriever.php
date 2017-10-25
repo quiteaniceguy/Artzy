@@ -209,17 +209,7 @@
 	}
 	
 	function insertMessage($message, $conn){
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbname="db_artzytest";
-		
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		
-		if($conn->connect_error){
-			die("connection error");
-		}
-		
+				
 		$sql = "INSERT INTO table_messages(message) VALUES(?)" ;
 		try{
 			$stmt = $conn->prepare($sql);
@@ -233,16 +223,10 @@
 	}
 	
 	function insertMessageData($messageId, $senderId, $recId, $mediaId, $conn){
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbname="db_artzytest";
 		
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		
-		if($conn->connect_error){
-			die("connection error");
-		}
+
+
+
 		 
 		$sql = "INSERT INTO table_messageData(messageId, sendby, sendto, mediaId) VALUES('{$messageId}', '{$senderId}', '{$recId}', '{$mediaId}')" ;
 		if(!( $conn->query($sql) ) ){
@@ -252,16 +236,10 @@
 		return mysqli_insert_id($conn);
 	}
 	function insertMessagebox($userId, $mailbox, $messageId, $conn){
-		$servername="localhost";
-		$username="root";
-		$password="";
-		$dbname="db_artzytest";
-		
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		
-		if($conn->connect_error){
-			die("connection error");
-		}
+			
+
+
+
 		//return $userId . $mailbox . $messageId;
 		$sql = "INSERT INTO table_mailboxes(userId, mailbox, messageId) VALUES('{$userId}', '{$mailbox}', '{$messageId}' )" ;
 		if(!( $conn->query($sql) ) ){

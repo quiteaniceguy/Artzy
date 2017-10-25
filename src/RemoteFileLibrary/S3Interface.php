@@ -16,7 +16,7 @@
 			
 			
 			
-			
+
 			if($files[$tmpName]['tmp_name'] != "") {
 				
 				///file details
@@ -39,7 +39,7 @@
 				
 
 				try{
-					
+					error_reporting(-1);	
 					$this->s3->putObject([
 						'Bucket' => $this->bucket,
 						'Key' => $uploadDir . $newFileName,
@@ -48,16 +48,19 @@
 					]);
 
 					unlink($tempUploadDir . $name);
+
 					return 0;
 					
 					
 		 
-				}catch(S3Exception $e) {
-					return $e->getMessage();
+				}catch(Exception $e) {
+					return "the error: " . $e->getMessage();
 				} 
 
-			}	
-			
+			}else{
+				return 9;
+			}
+		
 		}
 		
 		function deleteS3File($fileLocation){

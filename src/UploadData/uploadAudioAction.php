@@ -13,7 +13,7 @@
   $config = require('../../config/config.php');
   $fileUploader = new S3Interface($config['s3']['bucket'], $s3);
   
-  $fileName = $_FILES["uploadedImage"]["name"];
+  $fileName = $_FILES["uploadedAudio"]["name"];
   
   $extension = explode('.', $fileName);
   $extension = strtolower(end($extension));
@@ -97,7 +97,9 @@
 	  */
 	  //uploades audio
 	  //$fileUploader->uploadS3File($_FILES, "/var/www/html/artzy/src/FileUploader/TempFiles/", "UserData/AudioPost/Audio/", "uploadedAudio", $mediaId . ".mp3") == 0
-	  if ( $fileUploader->uploadS3File($_FILES, "/var/www/html/artzy/src/RemoteFileLibrary/TempFiles/", "UserData/AudioPost/Audio/", "uploadedAudio", $mediaId . ".mp3") == 0){
+	$uploadStatus = $fileUploader->uploadS3File($_FILES, "/var/www/html/Artzy/src/RemoteFileLibrary/TempFiles/", "UserData/AudioPost/Audio/", "uploadedAudio", $mediaId . ".mp3"); 
+
+	  if ( $uploadStatus == 0){
 		echo "audiofile moved";
 	  }else{
 		echo $_FILES["uploadedAudio"]["error"];
@@ -105,6 +107,7 @@
 	  }
 	  header('Location: uploadMedia.php?uploaded=1');
   }else{
+
 	  header('Location: uploadMedia.php?uploaded=2');
 	  echo "must be logged in to upload file";
   }

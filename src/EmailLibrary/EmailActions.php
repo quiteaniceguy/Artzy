@@ -1,7 +1,16 @@
 <?php
-include_once "PHPMailer/PHPMailerAutoload.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once"vendor/autoload.php";
+
+
+
+
  function sendEmail($message, $subject, $email){
-	 
+
+    try{ 
 	$mail             = new PHPMailer();
 
 	$mail->IsSMTP(); // telling the class to use SMTP
@@ -16,14 +25,14 @@ include_once "PHPMailer/PHPMailerAutoload.php";
 	$mail->Username   = "chefelthomas@gmail.com";  // username
 	$mail->Password   = "Kangeroo2";            // password
 
-	$mail->SetFrom('chefelthomas@gmail.com', 'Artzy');
+	$mail->SetFrom('chefelthomas@gmail.com', 'The Mural');
 
 	$mail->Subject    = $subject;
 
 	$mail->MsgHTML($message);
 
 	$address = $email;
-	$mail->AddAddress($address, "Artzy");
+	$mail->AddAddress($address, "The Mural");
 
 	if(!$mail->Send()) {
 	  echo "Mailer Error: " . $mail->ErrorInfo;
@@ -31,9 +40,26 @@ include_once "PHPMailer/PHPMailerAutoload.php";
 	} else {
 	  //echo "Message sent to " . $email;
 	}
-	
+    }catch(Exception $e){
+	die($e->getMessage());
+    }
+
+
   }
   function testFunc(){
 	  return "what";
   }
+/*
+  error_reporting(-1);
+  try{
+  echo "hello worlddd";
+  $mail = new PHPMailer(true);
+  sendEmail("hisomething", "holla", "tommyeblen@gmail.com");
+  echo "mailer made";
+ 
+  echo "hi";
+  }catch(Exception $e){
+	echo $e->getMessage();
+  }
+*/
 ?>

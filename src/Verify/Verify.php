@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -43,6 +44,8 @@
 				$vsql="UPDATE db_users SET isActivated = '1' WHERE id= {$row["id"]}";
 				if($conn->query($vsql)){
 					echo "verified";
+					$_SESSION["m_Login"] = "Account Verified";
+					header('Location: ../../index.php');
 				}else{
 					die("second thing died");
 				}
