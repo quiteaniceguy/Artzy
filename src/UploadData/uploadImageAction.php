@@ -14,7 +14,15 @@
   
   $extension = explode('.', $fileName);
   $extension = strtolower(end($extension));
-  
+ 
+ 
+
+	if($config["errors"]["report"] == 1){
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+		
+	}
   if($_SESSION["currentUser"]!=NULL && $_SESSION["currentId"]!=NULL && $extension == 'jpg'){
 	  
 	  //connects to server

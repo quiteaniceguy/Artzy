@@ -1,5 +1,14 @@
 <?php
-    require 'vendor/autoload.php';
+	
+	if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/Artzy/libs/aws/aws-autoloader.php')){
+		echo "exsits";
+	}else{
+		echo "no exists";
+	}
+	
+	ini_set('display_errors',1);
+    error_reporting(E_ALL);
+    include $_SERVER['DOCUMENT_ROOT'] . '/Artzy/libs/aws/aws-autoloader.php';
     use Aws\S3\S3Client;
 
     $config = require('config.php');

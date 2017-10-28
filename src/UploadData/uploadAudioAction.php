@@ -1,8 +1,6 @@
 <?php
   session_start();
   
-  require "../../config/S3Connect.php";
-  
   ini_set('display_errors',1);
   error_reporting(E_ALL);
   
@@ -103,7 +101,7 @@
 		echo "audiofile moved";
 	  }else{
 		echo $_FILES["uploadedAudio"]["error"];
-		die("audio file move failed");
+		die("audio file move failed: " . $uploadStatus);
 	  }
 	  header('Location: uploadMedia.php?uploaded=1');
   }else{

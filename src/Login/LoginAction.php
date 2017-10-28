@@ -7,17 +7,27 @@
 <body>
 	<?php
 		//die("what " . $_GET["username"] . $_GET["password"]);
+		$config = require('../../config/config.php');
+		
+		if($config["errors"]["report"] == 1){
+			ini_set('display_errors', 1);
+			ini_set('display_startup_errors', 1);
+			error_reporting(E_ALL);
+			
+		}
+		
 		
 		$user=$_GET["username"];
 		$pass=$_GET["password"];
 		
+		echo "mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}";
 		
 		
-		$config = require('../../config/config.php');
+                
 		$conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
-		
+	        
 	
-		
+	        
 		try{
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			echo "connection success";

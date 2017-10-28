@@ -16,7 +16,7 @@
 			
 			
 			
-
+			//die(var_dump($files) . "<br/>" . $tmpName . "<br/>" . var_dump($files["uploadedAudio"]));
 			if($files[$tmpName]['tmp_name'] != "") {
 				
 				///file details

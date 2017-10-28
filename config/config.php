@@ -26,6 +26,10 @@ return [
 		"shortPAudio" => "/UserData/AudioPost/Audio/"
 		
 	
+	],
+	
+	'errors' => [
+		'report' => '1'
 	]
 	
 	
