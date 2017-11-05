@@ -1,6 +1,6 @@
 <?php
 	include_once "../actions/DataRetriever.php";
-	include_once "../EmailLibrary/EmailActions.php";
+	require_once "../EmailLibrary/EmailActions.php";
 	
 	
 	function sendMessageType($currUsername, $currId, $recUsername, $message, $outType, $inType, $mediaId, $conn){

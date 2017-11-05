@@ -5,7 +5,7 @@
 function addComment(mediaId, username, userId) {
 	
 		$.ajax({
-			url: '../actions/addComment.php',
+			url: '/Artzy/src/actions/addComment.php',
 			type: 'POST',
 			data: { mediaId: mediaId, userId: userId, comment: document.getElementById("textarea"+mediaId).value },
 			success: function(result){
@@ -35,7 +35,7 @@ function loadComments(mediaId, nComments){
 				
 		}
 	};
-	xmlhttp.open("GET", "../actions/LoadComments.php?mediaId=" + mediaId + "&nComments=" + nComments, false);
+	xmlhttp.open("GET", "/Artzy/src/actions/LoadComments.php?mediaId=" + mediaId + "&nComments=" + nComments, false);
 	xmlhttp.send();
 			
 	  	

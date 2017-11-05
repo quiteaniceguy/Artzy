@@ -20,7 +20,7 @@ function loadMedia(group, nMedia, nMediaToLoad){
 			document.getElementById('loadMediaButton').innerHTML = "<b>Load more</b>";
 		}
 	};
-	xmlhttp.open("GET", "../actions/LoadGroupMedia.php?group=" + group + "&nMedia=" + nMedia + "&nMediaToLoad=" + nMediaToLoad , true);
+	xmlhttp.open("GET", "/Artzy/src/actions/LoadGroupMedia.php?group=" + group + "&nMedia=" + nMedia + "&nMediaToLoad=" + nMediaToLoad , true);
 	xmlhttp.send();
 	
 	

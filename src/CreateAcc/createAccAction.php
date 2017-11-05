@@ -7,10 +7,8 @@
 <body>
   <?php
 
-	error_reporting(E_ALL);
-	use PHPMailer\PHPMailer\PHPMailer;
-	use PHPMailer\PHPMailer\Exception;
-	require "vendor/autoload.php";
+	
+	require_once($_SERVER['DOCUMENT_ROOT']. "/Artzy/libs/phpmailer/PHPMailerAutoload.php");
 
     try{
 		///uploads user info to database
@@ -133,7 +131,9 @@
 	  
 
 	  $last_id = $conn->lastInsertId();
+	  echo "starting to send email";
 	  sendEmail($verificationCode, $last_id, $_POST["email"]);
+	  echo "email sent";
       $_SESSION["m_Login"] = "Check your emaily to verify your account(make sure to check your SPAM folder)";
       header( 'Location: ../Login/Login.php' );
     }

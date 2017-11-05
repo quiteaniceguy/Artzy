@@ -66,7 +66,7 @@
 		function deleteS3File($fileLocation){
 			
 			try{
-				
+				//var_dump($this->s3);
 				$this->s3->deleteObject([
 					'Bucket' => $this->bucket,
 					'Key' => $fileLocation,

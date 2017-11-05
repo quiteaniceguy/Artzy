@@ -6,96 +6,49 @@
 </head>
 <body>
 	<?php
-		//die("what " . $_GET["username"] . $_GET["password"]);
-		$config = require('../../config/config.php');
+		require($_SERVER['DOCUMENT_ROOT'] . '/Artzy/src/controllerHelpers/ErrorReports.php');
+		require_once($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/connections/connection.php");
+		require($_SERVER['DOCUMENT_ROOT'] . '/Artzy/src/models/sqlmodels/SQLInterface.php');
+	
+		$config = require $_SERVER["DOCUMENT_ROOT"] . "/Artzy/config/config.php";
+		$conn = Db::getInstance($config);
 		
-		if($config["errors"]["report"] == 1){
-			ini_set('display_errors', 1);
-			ini_set('display_startup_errors', 1);
-			error_reporting(E_ALL);
-			
-		}
+		$sqlInterface = new SQLInterface($conn);
+		
 		
 		
 		$user=$_GET["username"];
 		$pass=$_GET["password"];
-		
-		echo "mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}";
-		
-		
-                
-		$conn = new PDO("mysql:host={$config["mysql"]["servername"]};dbname={$config["mysql"]["dbName"]}", $config["mysql"]["username"], $config["mysql"]["password"]);
-	        
 	
-	        
-		try{
-			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			echo "connection success";
-			
-		}catch(PDOException $e){
-			echo "connection established" . $e->getMessage();
-		}
-		
-		
-		///finds account with matching login info
-		$sql = "SELECT * FROM db_users WHERE username='{$user}' AND password='{$pass}' ";
-		
-		
-		$sql="SELECT * FROM db_users WHERE username = :username AND password = :password ";
-		
-		try{
-			$stmt = $conn->prepare($sql);
-			$stmt->bindParam(':username' , $inputUser);
-			$stmt->bindParam(':password' , $inputPass);
-			
-			//insert row
-			$inputUser = $user;
-			$inputPass = $pass;
-			if($stmt->execute())
-				echo "executed";
-			
-			//$result = $stmt->get_result();
-	  }catch(Exception $e){
-		  die("prepare failed: " . $e);
-	  }
-		$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		var_dump($result);
-		
-	
-		
-		
-		
-		//$result=$conn->query($sql);	
-		echo 'finished';
-		echo $result["id"];
-		
+		$result = $sqlInterface->getLoginUser($user, $pass);
+
 		if ($result != NULL){
 			echo 'not null';
 			
-			if($result["isActivated"]==1){
+			if ($result["isActivated"] == 1){
 	
-				$_SESSION["currentUser"]=$user;
-				$_SESSION["currentId"]=$result["id"];
-				$_SESSION["currentPass"]=$pass;
+				$_SESSION["currentUser"] = $user;
+				$_SESSION["currentId"] = $result["id"];
+				$_SESSION["currentPass"] = $pass;
 				
 				setcookie("ARTZY_USERNAME", $user, time() + (86400 * 30), "/");
 				setcookie("ARTZY_PASSWORD", $pass, time() + (86400 * 30), "/");
 				
 				//header( 'Location: ../ProfilePage/profilePage.php' );
-				header( 'Location: ../Content/displayGroup.php?group=general' );
+				header( 'Location: /Artzy/view/DisplayGroup/GroupViewer.php?group=general' );
 			}else{
 				$_SESSION["m_Login"]="Unverified Account. Check your email to verify(make sure to check your SPAM folder).";
-				header('Location: Login.php');
+				header('Location: /Artzy/src/views/Login/Login.php');
 			}
 			
 		}else{
 			if($_GET["cookie"] == 1){
 				$_SESSION["cookie"] = "1" ;
-				header('Location: Login.php');
+				header('Location: /Artzy/src/views/Login/Login.php');
 				
 			}else{
 				$_SESSION["m_Login"] = "password or username incorrect" ;
-				header('Location: Login.php');
+				header('Location: /Artzy/src/views/Login/Login.php');
 				echo "no user found";
 			}
 			

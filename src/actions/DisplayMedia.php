@@ -1,10 +1,12 @@
 <?php
 ///////////////THIS FILE IS SOOOOOOOO GROOOSSSSSSS
-include_once "DisplayMediaOptions.php";
-include_once "DisplayComment.php";
-include_once "DataRetriever.php";
-include_once "../RemoteFileLibrary/URLChecker.php";
-$config = require('../../config/config.php');
+include_once $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/actions/DisplayMediaOptions.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/actions/DisplayComment.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/actions/DataRetriever.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/RemoteFileLibrary/URLChecker.php';
+
+require  $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/controllerHelpers/ErrorReports.php';
+$config = require($_SERVER["DOCUMENT_ROOT"] . '/Artzy/config/config.php');
 
 function displayNormalFormatWithLoadButton($mediaIds, $nMediaToLoad, $conn){
 	///allPosts contains all posts
@@ -27,7 +29,7 @@ function displayNormalFormatWithLoadButton($mediaIds, $nMediaToLoad, $conn){
 		
 		$nMedia++;
 	}
-	
+	echo $nMedia;
 	
 	echo "</div>";//allPosts
 	

@@ -19,7 +19,7 @@ function addLike(mediaId, userId) {
 				}
 			}
 		};
-		xmlhttp.open("GET", "../actions/addLike.php?mediaId=" + mediaId + "&userId=" + userId, false);
+		xmlhttp.open("GET", "/Artzy/src/actions/addLike.php?mediaId=" + mediaId + "&userId=" + userId, false);
 		xmlhttp.send();
 		
 	  

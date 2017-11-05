@@ -1,11 +1,6 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require_once"vendor/autoload.php";
-
-
+require_once($_SERVER['DOCUMENT_ROOT']. "/Artzy/libs/phpmailer/PHPMailerAutoload.php");
 
 
  function sendEmail($message, $subject, $email){
@@ -50,7 +45,9 @@ require_once"vendor/autoload.php";
 	  return "what";
   }
 /*
-  error_reporting(-1);
+  ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
   try{
   echo "hello worlddd";
   $mail = new PHPMailer(true);

@@ -17,7 +17,7 @@ function deleteComment(mailId){
 				
 		}
 	};
-	xmlhttp.open("GET", "../actions/DeleteMessageAction.php?mailid="+mailId, true);
+	xmlhttp.open("GET", "/Artzy/src/actions/DeleteMessageAction.php?mailid="+mailId, true);
 	xmlhttp.send();
 	
 	//alert("delete comment ran");

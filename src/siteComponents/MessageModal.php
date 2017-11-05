@@ -37,7 +37,7 @@
 			
 			
 			$.ajax({
-				url: '../actions/SendMessage.php',
+				url: '/Artzy/src/actions/SendMessage.php',
 				type: 'POST',
 				data: {message: document.getElementById('message').value, userId: currentId, user: currentUser, sendto: document.getElementById('sendto').value, messageType: messageType, mediaId: document.getElementById('mediaIdValue').value},
 				success: function(result){

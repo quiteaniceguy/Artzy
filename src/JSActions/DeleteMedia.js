@@ -12,12 +12,13 @@ function deleteMedia(mediaId){
 			//document.getElementById("comments"+mediaId).innerHTML = this.responseText + document.getElementById("comments"+mediaId).innerHTML;
 			if(this.responseText == "0")
 				alert("Media deleted");
-				
+			else 
+				alert("Media deletion error: " + this.responseText);
 				
 				
 		}
 	};
-	xmlhttp.open("GET", "../actions/DeleteMediaAction.php?mediaId=" + mediaId, true);
+	xmlhttp.open("GET", "/Artzy/src/actions/DeleteMediaAction.php?mediaId=" + mediaId, true);
 	xmlhttp.send();
 	
 	//alert("delete comment ran");

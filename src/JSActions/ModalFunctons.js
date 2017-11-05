@@ -24,7 +24,7 @@ $(document).ready(function(){
 	});
 	$("#send").click(function(){
 		$.ajax({
-			url: '../actions/SendMessage.php',
+			url: '/Artzy/src/actions/SendMessage.php',
 			type: 'POST',
 			data: {message: document.getElementById('message').value, userId: currentId, sendto: document.getElementById('sendto').value},
 			success: function(result){

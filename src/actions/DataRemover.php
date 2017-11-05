@@ -2,15 +2,16 @@
 	//this file should use a class if you wanna fix it
 	include_once "DataRetriever.php";
 	
-	require "../../config/S3Connect.php";
-	require "../RemoteFileLibrary/S3Interface.php";
+	
+	require $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/RemoteFileLibrary/S3Interface.php';
 
-	$s3 = require "../../config/S3Connect.php";
-	$config = require('../../config/config.php');
+	$s3 = require $_SERVER["DOCUMENT_ROOT"] . '/Artzy/config/S3Connect.php';
+	$config = require($_SERVER["DOCUMENT_ROOT"] . '/Artzy/config/config.php');
 	
 	$fileRemover = new S3Interface($config['s3']['bucket'], $s3);
 	
 	function deleteMedia($mediaId, $conn){
+		
 		global $fileRemover;
 		global $config;
 		
@@ -83,7 +84,7 @@
 	function deleteImage($mediaId, $conn, $fileLocation, $fileRemover){
 		
 		$fileRemover->deleteS3File($fileLocation . $mediaId . ".jpg");
-	
+		
 		$sql = "DELETE FROM table_images WHERE mediaId = {$mediaId}";
 		if ($conn->query($sql)) {
 			return 0;
