@@ -1,7 +1,7 @@
 <?php
 	
 	if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/Artzy/libs/aws/aws-autoloader.php')){
-		echo "exsits";
+		//echo "exsits";
 	}else{
 		echo "no exists";
 	}
