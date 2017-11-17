@@ -11,6 +11,7 @@
   		$groupName = $_GET["group"];
       if (!isset($_GET["group"]))
         $groupName = "general";
+        
   		$groupId = $this->sqlInterface->getGroupId($groupName);
   		$groupLinks = $this->sqlInterface->getGroupLinks($groupId);
 
@@ -24,25 +25,8 @@
   		$media = $this->sqlInterface->getArrayOfMedia($groupIds);
 
       //gets username and media data for display of each media's owner
-      for ($i = 0; $i < sizeof($media); $i++){
-        $media[$i]["getUsername"] = $this->sqlInterface->getUsername($media[$i]["userId"]);
+      $media = $this->sqlInterface->setMediaSpecificData($media);
 
-        switch($media[$i]["name"]){
-          case 'audio':
-            $media[$i]["getAudio"] = $this->sqlInterface->getAudio($media[$i]["id"]);
-
-            break;
-          case 'image':
-            $media[$i]["getImage"] = $this->sqlInterface->getImage($media[$i]["id"]);
-
-            break;
-          case 'text':
-            $media[$i]["getText"] = $this->sqlInterface->getWriting($media[$i]["id"]);
-
-            break;
-        }
-
-      }
 
 
       //var_dump($media);

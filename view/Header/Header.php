@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Megrim" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-<link rel="stylesheet" href="../../css/header.css"/>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script src = "/Artzy/src/javascript/ajax/LoadGroupsFromSearch.js"></script>
@@ -13,7 +13,7 @@
   <?php
 	error_reporting(0);
 
-	if($_SESSION["currentId"]!=NULL){
+	if($_SESSION["currentId"]=NULL){
 		echo "<div id='logo'><span style = 'z-index: 20;' onclick = 'testFunc()'>the mural.</span></div> ";
 		echo "<div id='searchDiv'><input id='searchBar' class='searchBar' type='text' name ='search' placeholder='Search For Groups(general, writing, music, visualarts, etc...)' onkeyup = 'showResult(this.value)' /></div> ";
 		echo "<a id='headerElement' href='/Artzy/src/Login/Logout.php'>LOGOUT</a>";
@@ -36,7 +36,3 @@
   ?>
 
 </div>
-
-<script>
-
-</script>

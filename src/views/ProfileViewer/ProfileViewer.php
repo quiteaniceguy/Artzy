@@ -1,10 +1,8 @@
-
 <script src = '/Artzy/src/javascript/ajax/AddLike.js'></script>
 <script src = '/Artzy/src/javascript/ajax/Comments.js'></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src = '/Artzy/src/javascript/ajax/LoadNormalFormatMedia.js'></script>
-
 
 <link rel = "stylesheet" href = "/Artzy/css/DisplayMedia/DisplayMedia.css">
 
@@ -21,14 +19,14 @@
 	include  $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/siteComponents/MessageModal.php';
 	include  $_SERVER["DOCUMENT_ROOT"] . '/Artzy/src/siteComponents/Contact.php';
 	*/
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/Artzy/src/views/DisplayHelpers/DisplayMedia.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/Artzy/src/views/Header/Header.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/Artzy/src/views/MessageModal/MessageModal.php';
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/Artzy/src/views/DisplayHelpers/DisplayMedia.php';
 	$config = require $_SERVER["DOCUMENT_ROOT"] . "/Artzy/config/config.php";
 	///uses group name to get group id
 
 
-	echo  "<p style='font-size: 10vh;' >{$groupName}:</p>" ."<br/>" ;
+	echo  "<p style='font-size: 10vh;' >profile viewer: {$username}</p>" ."<br/>" ;
 
 
 
@@ -45,9 +43,11 @@
 	<?php
 		$displayMedia = new DisplayMedia();
 		$nStartingMedia = 5;
+
 		$displayResult = $displayMedia->loadMedia($_SESSION["currentId"], $media, 0, $nStartingMedia, 1, $config);
-		$displayResult = explode("||||", $displayResult);
-		echo($displayResult[0]);
+    $displayResult = explode("||||", $displayResult);
+
+    echo($displayResult[0] . "<br/>");
 	 ?>
 
 </div>
@@ -67,8 +67,6 @@
 
 
 	echo "<span  style = 'position:absoulte; left: 20vw; margin-left: 45vw;' id = \"loadMediaButton\" onClick = \"loadMedia({$_SESSION["currentId"]}, {$displayResult[1]}, 7, 1, jsonMediaArray)\"><b>Load more media</b></span>";
-
-
 
 
 

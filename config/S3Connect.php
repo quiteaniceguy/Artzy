@@ -1,14 +1,16 @@
 <?php
-	
+
 	if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/Artzy/libs/aws/aws-autoloader.php')){
 		//echo "exsits";
 	}else{
 		echo "no exists";
 	}
-	
-	ini_set('display_errors',1);
+
+		ini_set('display_errors',1);
     error_reporting(E_ALL);
-    include $_SERVER['DOCUMENT_ROOT'] . '/Artzy/libs/aws/aws-autoloader.php';
+
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/Artzy/libs/aws/aws-autoloader.php';
+
     use Aws\S3\S3Client;
 
     $config = require('config.php');
@@ -17,9 +19,9 @@
 
 
     $testVar = $config['s3']['secret'];
-    
-    try{ 
-		
+
+    try{
+
 		$s3 = S3Client::factory([
 			'version' => $config['s3']['version'],
 			'region' => $config['s3']['region'],
@@ -29,15 +31,15 @@
 			)
 
 		]);
-		return $s3; 
-		
+		return $s3;
+
     }catch(Exception $e){
 		die($e->getMessage());
     }
 
 
-   
 
-	
-	
-?> 
+
+
+
+?>

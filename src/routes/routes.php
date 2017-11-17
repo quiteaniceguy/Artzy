@@ -36,6 +36,19 @@
 			case 'groupViewer':
 				$controller = new GroupViewerController($sqlInterface);
 				break;
+			case 'profileViewer':
+				$controller = new ProfileViewerController($sqlInterface);
+				break;
+			case 'mediaViewer':
+				$controller = new MediaViewerController($sqlInterface);
+				break;
+			case 'logout':
+				$controller = new LogoutController();
+				break;
+			case 'profileEditor':
+				$controller = new ProfileEditorController($sqlInterface);
+				break;
+
 		}
 
 		$controller->{$action}();
@@ -49,7 +62,11 @@
 						'uploadMedia' => ['home', 'error'],
 						'messageViewer' => ['home', 'error'],
 						'muralReview' => ['home', 'error'],
-						'groupViewer' => ['home', 'error']);
+						'groupViewer' => ['home', 'error'],
+						'profileViewer' => ['home', 'error'],
+						'mediaViewer' => ['home', 'error'],
+						'logout' => ['home', 'error'],
+						'profileEditor' => ['home', 'error']);
 
 	if (array_key_exists($controller, $controllers)) {
 		if (in_array($action, $controllers[$controller])){

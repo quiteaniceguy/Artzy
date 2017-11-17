@@ -1,0 +1,97 @@
+.post{
+  position: relative;
+
+  left: 23vw;
+//  background-color: red;
+
+  width: 54vw;
+  min-height: 30vh;
+}
+/*holds media content*/
+.textContent{
+  //background-color: yellow;
+  width: 40vw;
+}
+.audioContent{
+  //background-color: yellow;
+  width: 40vw;
+}
+.imageContent{
+  //background-color: yellow;
+  width: 40vw;
+}
+/*holds all 'mediaOption'*/
+.mediaOptions{
+  position: absolute;
+
+  top: 0vw;
+  right: 0vw;
+
+  width: 8vw;
+  height: 30vh;
+
+//  background-color: blue;
+}
+/*each individual media option*/
+.mediaOption{
+  margin: auto;
+//  background-color: green;
+  width: 6vw;
+  height: 8vh;
+
+  display: inline-block;
+}
+/* like image option */
+.timesSymbol{
+  position: absolute;
+
+  width: 3vw;
+  left: 4.3vw;
+
+  font-size: 2.2vh;
+  top: 0vh;
+}
+.likeButton{
+  position: absolute;
+  width: 4vw;
+  left: .3vw;
+}
+
+.likeCounter{
+  position: absolute;
+
+  font-size: 4vh;
+  top: .8vh;
+  left: 5.3vw;
+}
+/* profile image option */
+.profileIcon{
+  position: absolute;
+
+  left: 1vw;
+}
+
+/*delete media image option */
+.deleteMedia{
+  position: absolute;
+
+  width: 4vw;
+  height: 10vh;
+
+  left: .2vw;
+}
+
+/*audio source*/
+.audioSrc{
+  margin-left: 9vw;
+}
+
+.commentButton{
+  margin-left: 18vw;
+  display: block;
+
+}
+.commentTextArea{
+  margin-left: 16vw;
+  display: block;
+}
