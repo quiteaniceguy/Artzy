@@ -5,9 +5,10 @@ function addComment(mediaId, username, userId) {
 			type: 'POST',
 			data: { mediaId: mediaId, userId: userId, comment: document.getElementById("textarea"+mediaId).value },
 			success: function(result){
-				//commentButtonText = "<div id='comment'>  <div style='color: red;'>&emsp;&emsp;" + username + ":</div><div style='padding-left: 3vw;'>" + result + "</div><br/></div>";
-				//document.getElementById("comments"+mediaId).innerHTML = commentButtonText + document.getElementById("comments"+mediaId).innerHTML;
-        alert(result);
+				commentButtonText = "<div id='comment'>  <div style='color: red;'>&emsp;&emsp;" + username + ":</div><div style='padding-left: 3vw;'>" + result + "</div><br/></div>";
+				document.getElementById("comments"+mediaId).innerHTML = commentButtonText + document.getElementById("comments"+mediaId).innerHTML;
+				document.getElementById("textarea"+mediaId).value = "";
+        
 			}
 		});
 

@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require_once ($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/connections/connection.php");
   require_once ($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/models/s3models/S3Interface.php");
   require_once ($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/models/sqlmodels/SQLInterface.php");
@@ -14,7 +15,7 @@
 
 
   //uploads audio data. Must change 173 to session user when setup
-  $mediaId = $sql->uploadMedia(173, 4);
+  $mediaId = $sql->uploadMedia($_SESSION["currentId"], 4);
   $audioId = $sql->uploadAudio($_POST["audioName"], $mediaId);
 
   //upload files to aws s3

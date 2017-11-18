@@ -8,6 +8,8 @@ $conn = Db::getInstance($config);
 
 $sql = new SQLInterface($conn);
 
-echo $sql->insertComment($_POST["comment"], $_POST["mediaId"], $_POST["userId"]);
+$sql->insertComment($_POST["comment"], $_POST["mediaId"], $_POST["userId"]);
+
+echo $_POST["comment"];
 
  ?>

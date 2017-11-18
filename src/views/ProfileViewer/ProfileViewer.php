@@ -44,7 +44,7 @@
 		$displayMedia = new DisplayMedia();
 		$nStartingMedia = 5;
 
-		$displayResult = $displayMedia->loadMedia($_SESSION["currentId"], $media, 0, $nStartingMedia, 1, $config);
+		$displayResult = $displayMedia->loadMedia($_SESSION["currentId"], $media, 0, $nStartingMedia, 3, $config);
     $displayResult = explode("||||", $displayResult);
 
     echo($displayResult[0] . "<br/>");
@@ -66,7 +66,7 @@
 
 
 
-	echo "<span  style = 'position:absoulte; left: 20vw; margin-left: 45vw;' id = \"loadMediaButton\" onClick = \"loadMedia({$_SESSION["currentId"]}, {$displayResult[1]}, 7, 1, jsonMediaArray)\"><b>Load more media</b></span>";
+	echo "<span  style = 'position:absoulte; left: 20vw; margin-left: 45vw;' id = \"loadMediaButton\" onClick = \"loadMedia({$_SESSION["currentId"]}, {$displayResult[1]}, 7, 3, jsonMediaArray)\"><b>Load more media</b></span>";
 
 
 

@@ -54,6 +54,7 @@ class DisplayMedia{
 
       $mediaToAdd = "<div class = 'post'>" . $mediaToAdd;
 
+      //switch case used to determin which image options to use at the side of media
       $selectMediaOptions = array(false, false, false, false);
       switch($mediaOptionsType){
         case 1:
@@ -61,6 +62,9 @@ class DisplayMedia{
           break;
         case 2:
           $selectMediaOptions = array(true, false, false, true);
+          break;
+        case 3:
+          $selectMediaOptions = array(true, false, false, false);
           break;
       }
       $mediaToAdd = $mediaToAdd . $this->displayMediaOptions($temp_media, $_SESSION["currentId"], $selectMediaOptions);
@@ -125,7 +129,7 @@ class DisplayMedia{
     //ending post
 
 
-    return $returnText . "<p>imageID: {$tempMedia["id"]}</p>";
+    return $returnText;
   }
 
   function displayText($tempMedia, $cut){
@@ -170,8 +174,12 @@ class DisplayMedia{
     //start textContent
     $returnText = $returnText . "<div class = 'textContent' >";
 
-
-    $returnText = $returnText . $tempMedia["getText"]["mediaText"];
+    if ($cut && strlen($tempMedia["getText"]["mediaText"]) > 1000){
+      $textToDisplay = $this->trimContent($tempMedia["getText"]["mediaText"], 1000) . ".........<a href = '/Artzy/indexTest.php?controller=mediaViewer&action=home&group=general&mediaId={$tempMedia["id"]}' target = '_blank' style = 'color: blue;' >(more)</a>";
+      $returnText = $returnText . $textToDisplay;
+    }else{
+      $returnText = $returnText . $tempMedia["getText"]["mediaText"];
+    }
 
     //ending textContent
     $returnText = $returnText . "</div>";
@@ -229,7 +237,7 @@ class DisplayMedia{
     if ($selectMediaOptions[1]) {
       $returnText = $returnText . "<div class = 'mediaOption' >
 
-      <a href='/Artzy/indexTest.php?controller=profileViewer&action=home&username=test' target = '_blank'>
+      <a href='/Artzy/indexTest.php?controller=profileViewer&action=home&username={$tempMedia["getUsername"]["username"]}' target = '_blank'>
         <img id='imageOptionsProfileIcon' class='profileIcon' style='height: 5.75vh; width: 2.75vw; ' src='/Artzy/icons/profileIcon.gif'  />
       </a>
 
@@ -242,14 +250,14 @@ class DisplayMedia{
 
 
 
-        <img id='imageOptionsMailIcon' class='mailIcon' style='height: 5.75vh; width: 5vw; ' src='/Artzy/icons/mailIcon.png'  onClick = \"openModal('test', '{$tempMedia["id"]}', '173')\" />
+        <img id='imageOptionsMailIcon' class='mailIcon' style='height: 5.75vh; width: 5vw; ' src='/Artzy/icons/mailIcon.png'  onClick = \"openModal('{$tempMedia["getUsername"]["username"]}', '{$tempMedia["id"]}', '173')\" />
 
       </div><br/>";
     }
 
     if ($selectMediaOptions[3]) {
       $returnText = $returnText . "<div class = 'mediaOption' >
-      <img class = 'deleteMedia' onclick = \"deleteMedia('{$mediaId}')\" src = '/Artzy/icons/trashIcon.png' />
+      <img class = 'deleteMedia' onclick = \"deleteMedia('{$tempMedia["id"]}')\" src = '/Artzy/icons/trashIcon.png' />
       </div><br/>";
     }
     //end mediaOptions
@@ -318,7 +326,25 @@ class DisplayMedia{
     return $mediaToAdd;
   }
 
+  //helper trim str funciton
+  function trimContent( $str, $trimAt){
+  	$nStartBracket = 0;
+  	$nEndBracket = 0;
 
+  	$returnString = "";
+
+  	for ($i = 0; $i < strlen($str) && $i < $trimAt || $nStartBracket != $nEndBracket ; $i++) {
+
+  		if ($str[$i] == "<")
+  			$nStartBracket++;
+  		else if($str[$i] == ">")
+  			$nEndBracket++;
+
+  		$returnString = $returnString . $str[$i];
+  	}
+
+  	return $returnString;
+  }
 
 
 }

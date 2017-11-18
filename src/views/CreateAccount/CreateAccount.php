@@ -3,8 +3,8 @@
 <link href = "https://fonts.googleapis.com/css?family=Lora" rel = "stylesheet">
 <link rel="icon" href="../../favicon.PNG" type="image/png">
 
-<div id = 'back'> 
-	<img id='backImage' src = '../../Backgrounds/stageflipped.jpg' /> 
+<div id = 'back'>
+	<img id='backImage' src = '../../Backgrounds/stageflipped.jpg' />
 </div>
 
 <div id="leftContainer">
@@ -19,9 +19,9 @@
 		<br/>School <br><textarea type="text" name="school" rows="1" cols="60"></textarea>
 		<br/>Phone Number&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Age<br><textarea type="text" name="phoneNumber" rows="1" cols="28"></textarea> <textarea type="text" name="age" rows="1" cols="28"></textarea>
 		<br/>About <br><textarea rows="5" cols="60" name="about"></textarea>
-		
+
 		<br/>Profile Picture: <input type="file" name="uploadFile" id="uploadFile" style="opacity:1; z-index:1;">
-		
+
 		<input type="submit" value="Create Account" class="button" name="submit">
 		<?php
 			echo "<br/><br/>" . $_GET["error"];
@@ -30,5 +30,5 @@
 </div>
 
 <div id="loginLink">
-	Already have an account? Login <a href="/Artzy/view/Login/Login.php"><b>here!</b></a>
+	Already have an account? Login <a href="/Artzy/indexTest.php?controller=login&action=home"><b>here!</b></a>
 </div>

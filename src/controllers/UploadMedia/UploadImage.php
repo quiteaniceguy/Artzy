@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require_once ($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/connections/connection.php");
   require_once ($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/models/s3models/S3Interface.php");
   require_once ($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/models/sqlmodels/SQLInterface.php");
@@ -15,7 +16,7 @@
   $imagetemp=$_FILES["uploadedImage"]["tmp_name"];
   list($imageWidth, $imageHeight) = getimagesize($imagetemp);
 
-  $mediaId = $sql->uploadMedia(173, 1);
+  $mediaId = $sql->uploadMedia($_SESSION["currentId"], 1);
   $audioId = $sql->uploadImage($_POST["imageName"], $imageWidth, $imageHeight, $mediaId);
 
   $uploadStatus = $fileUploader->uploadS3File($_FILES, "/var/www/html/Artzy/src/RemoteFileLibrary/TempFiles/", "UserData/ImagePost/", "uploadedImage", $mediaId . ".jpg");

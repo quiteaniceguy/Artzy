@@ -33,17 +33,17 @@
 			header( 'Location: /Artzy/indexTest.php?controller=groupViewer&action=home' );
 		}else{
 			$_SESSION["m_Login"]="Unverified Account. Check your email to verify(make sure to check your SPAM folder).";
-			header('Location: /Artzy/src/views/Login/Login.php');
+			header('Location: /Artzy/indexTest.php?controller=login&action=home');
 		}
 
 	}else{
 		if($_GET["cookie"] == 1){
 			$_SESSION["cookie"] = "1" ;
-			header('Location: /Artzy/src/views/Login/Login.php');
+			header('Location: /Artzy/indexTest.php?controller=login&action=home');
 
 		}else{
 			$_SESSION["m_Login"] = "password or username incorrect" ;
-			header('Location: /Artzy/src/views/Login/Login.php');
+			header('Location: /Artzy/indexTest.php?controller=login&action=home');
 			echo "no user found";
 		}
 

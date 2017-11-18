@@ -1,5 +1,5 @@
 function showResult(str) {
-    alert('something typed');
+    
     if (str.length==0){
       document.getElementById("livesearch").innerHTML="";
       document.getElementById("livesearch").style.border="0px";

@@ -1,4 +1,5 @@
 <?php
+	session_start();
   require_once($_SERVER['DOCUMENT_ROOT'] . '/Artzy/src/models/sqlmodels/SQLInterface.php');
   require_once($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/connections/connection.php");
   require_once($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/controllers/EmailLibrary/EmailInterface.php");
@@ -9,9 +10,27 @@
 
   $sql = new SQLInterface($conn);
 
-  $groups = $sql->getGroupsFromSearch($_GET["searchValue"]);
+	$verificationCode=$_GET["code"];
+	$id=$_GET["userid"];
 
-  foreach ($groups as $group){
-    echo "<a href = /Artzy/indexTest.php?controller=groupViewer&action=home&group={$group}>{$group}<a/><br/>";
-  }
- ?>
+
+
+
+	$user = $sql->getUsername($id);
+
+
+
+
+	if( $user["verificationCode"] == $verificationCode ){
+
+		$sql->updateUserActivation($user["id"], 1);
+		echo "account verified";
+	}else{
+		echo "codes don't match";
+	}
+
+
+
+
+
+?>

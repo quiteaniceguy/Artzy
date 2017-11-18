@@ -1,7 +1,8 @@
+
 <link rel="icon" href="../../favicon.PNG" type="image/png">
 <link rel="stylesheet" href="/Artzy/css/loginPage.css">
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Megrim" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
@@ -17,7 +18,7 @@ the mural.
 			<br/><br/>Password<br/><input type="password" class="input" name="password"/>
 			<br/><br/><br/><input id="loginSubmitButton" class="Button" type="submit"/>
 		</form>
-		<?php 
+		<?php
 			//outputs login message (e.g incorrect login info)
 			if ($_SESSION["m_Login"]!= NULL){
 				echo "<br/><br/>{$_SESSION["m_Login"]}";
@@ -40,6 +41,6 @@ the mural.
 		-->
 	</div>
 	<div id="createAccLink">
-		Don't have an account? Make one <a href="/Artzy/src/CreateAccount/CreateAcc/createAcc.php"><b>here!</b></a>
+		Don't have an account? Make one <a href="/Artzy/indexTest.php?controller=createAcc&action=home"><b>here!</b></a>
 	</div>
 </div>

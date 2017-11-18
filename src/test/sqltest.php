@@ -5,7 +5,7 @@
 
 	require_once($_SERVER["DOCUMENT_ROOT"] . "/Artzy/src/connections/connection.php");
 
-	$testWr = 472;
+	$testWr = 600;
 	$testAu = 542;
 	$testIm = 476;
 	$testGroups = array("general", "visualarts");
@@ -19,18 +19,18 @@
 	$fileUploader = new S3Interface($config['s3']['bucket'], $s3);
 	$sqlInterface = new SQLInterface($conn);
 
-	var_dump($sqlInterface->getMedia($testWr));
-	var_dump($sqlInterface->getUser("tommy"));
-	var_dump($sqlInterface->getAudio($testAu));
+	//var_dump($sqlInterface->getMedia($testWr));
+	//var_dump($sqlInterface->getUser("tommy"));
+	//var_dump($sqlInterface->getAudio($testAu));
 	var_dump($sqlInterface->getWriting($testWr));
-	var_dump($sqlInterface->getImage($testIm));
-	var_dump($sqlInterface->getComments($testIm));
-	var_dump($sqlInterface->getGroupId("visualarts"));
-	var_dump($sqlInterface->getGroupLinks(3));
-	var_dump($sqlInterface->getMediaIdsFromUser(145));
-	var_dump($sqlInterface->getUsername(145));
-	var_dump($sqlInterface->getGroupsFromSearch('ge'));
-	var_dump($sqlInterface->deleteAllMediaData(599));
+	//var_dump($sqlInterface->getImage($testIm));
+	//var_dump($sqlInterface->getComments($testIm));
+	//var_dump($sqlInterface->getGroupId("visualarts"));
+	//var_dump($sqlInterface->getGroupLinks(3));
+	//var_dump($sqlInterface->getMediaIdsFromUser(145));
+	//var_dump($sqlInterface->getUsername(145));
+	//var_dump($sqlInterface->getGroupsFromSearch('ge'));
+	var_dump($sqlInterface->deleteMediaData(600));
 
 	//tests for uploading data, wanna stop uploading random shit
 	/*

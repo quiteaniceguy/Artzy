@@ -365,22 +365,26 @@
 		function deleteLikes($mediaId){
 			$sql = "DELETE FROM table_likes WHERE mediaId = {$mediaId}";
 
-			$this->conn->query($sql);
+			if ($this->conn->query($sql))
+				return true;
 
-			return true;
+			return false;
 		}
 
 		function deleteText($mediaId){
+
 
 			$textMedia = $this->getWriting($mediaId);
 
 			$sql = "DELETE FROM table_textData WHERE mediaId = {$mediaId}";
 
 			if ($this->conn->query($sql)) {
+
 				$sql = "DELETE FROM table_text WHERE id = {$textMedia["textId"]}";
 				if ($this->conn->query($sql)) {
 					return 0;
 				}
+
 				return 5;
 			}
 
@@ -407,15 +411,18 @@
 			return 1;
 		}
 
-		function deleteAllMediaData($mediaId){
+		function deleteMediaData($mediaId){
 
 			///get mediaType
 			$media = $this->getMedia($mediaId);
 
 			//return $mediaId;
 
-			if ( !$this->deleteComments($mediaId) && !$this->deleteLikes($mediaId) ){
+			if ( !$this->deleteComments($mediaId) ){
 				return "3";
+			}
+			if ( !$this->deleteLikes($mediaId) ){
+				return "4";
 			}
 
 			//image
@@ -433,9 +440,11 @@
 			if ($media["mediaType"] == 4) {
 				 $this->deleteAudio($mediaId);
 			}
+
 			//delete group group links and from table_media
 			$this->deleteGroupLinks($mediaId);
 			$this->deleteMedia($mediaId);
+
 		}
 
 		function deleteMedia($mediaId){
@@ -617,6 +626,14 @@
 				die("prepare failed: " . $e);
 			}
 			return $this->conn->lastInsertId();
+		}
+
+		function updateUserActivation($userId, $activated){
+			$sql = "UPDATE db_users SET isActivated = '{$activated}' WHERE id= {$userId}";
+			if ($this->conn->query($sql))
+				return 0;
+
+			return 1;
 		}
 
 	}///class
