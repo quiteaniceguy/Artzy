@@ -29,7 +29,7 @@ return [
 	],
 
 	'errors' => [
-		'report' => '1'
+		'report' => '0'
 	]
 
 

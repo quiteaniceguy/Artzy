@@ -17,4 +17,6 @@
   $sql->uploadGroupLinks($groups, $mediaId);
 
   echo "upload text";
+
+  header('Location: /Artzy/indexTest.php?controller=uploadMedia&action=home');
  ?>

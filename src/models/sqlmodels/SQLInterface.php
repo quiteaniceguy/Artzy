@@ -456,6 +456,17 @@
 			return 0;
 		}
 
+		function deleteMessage($messageId){
+			
+			$sql = "DELETE FROM table_mailboxes WHERE id = {$messageId}";
+			$result = $this->conn->query($sql);
+
+			if(!$result)
+				die("failed to delete message");
+
+			echo "0";
+		}
+
 		//////////functions inserting data
 
 		function uploadMedia($currentId, $mediaType){

@@ -1,0 +1,18 @@
+.username{
+  //background-color: yellow;
+
+  text-align: center;
+  font-size: 8vh;
+}
+.about{
+  //background-color: blue;
+
+  width: 45vw;
+  font-size: 2vh;
+  margin: auto;
+}
+.postsTitle{
+  text-align: center;
+
+  font-size: 4vh;
+}

@@ -5,7 +5,9 @@
 <script src = '/Artzy/src/javascript/ajax/LoadNormalFormatMedia.js'></script>
 
 <link rel = "stylesheet" href = "/Artzy/css/DisplayMedia/DisplayMedia.css">
-
+<link rel = "stylesheet" href = "/Artzy/css/ProfileViewer/ProfileViewer.css">
+<link rel = "stylesheet" href = "/Artzy/css/GlobalFormatting.css">
+<div class = "smallBody">
 <?php
 	/*
 	/////////////include
@@ -26,7 +28,9 @@
 	///uses group name to get group id
 
 
-	echo  "<p style='font-size: 10vh;' >profile viewer: {$username}</p>" ."<br/>" ;
+	echo  "<br/><br/><div class = 'username' ><u>{$user["fName"]} {$user["lName"]} a.k.a {$username}</u></div>" ;
+	echo  "<br/><br/><br/><div class = 'about'>About: {$user["about"]}</div>" ."<br/>" ;
+	echo 	"<br/><br/><div class = 'postsTitle'> Posts: </div>";
 
 
 
@@ -66,8 +70,9 @@
 
 
 
-	echo "<span  style = 'position:absoulte; left: 20vw; margin-left: 45vw;' id = \"loadMediaButton\" onClick = \"loadMedia({$_SESSION["currentId"]}, {$displayResult[1]}, 7, 3, jsonMediaArray)\"><b>Load more media</b></span>";
+	echo "<span  style = 'position:absoulte; left: 20vw; margin-left: 40vw;' id = \"loadMediaButton\" onClick = \"loadMedia({$_SESSION["currentId"]}, {$displayResult[1]}, 7, 3, jsonMediaArray)\"><b>Load more media</b></span>";
 
 
 
 ?>
+</div>

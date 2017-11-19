@@ -3,6 +3,8 @@
 <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
 <link rel="stylesheet" href="/Artzy/css/MessagesPage.css">
+
+<script src = '/Artzy/src/javascript/ajax/DeleteMessage.js'></script>
 <br/><br/><br/><br/>
 <div id = "messageLinks">
 	<a href = "/Artzy/indexTest.php?controller=messageViewer&action=home">all</a> |
@@ -56,7 +58,7 @@
 			echo "<div id = 'messageBody' >{$message}</div>";
 			echo "<div id = 'messageOptions' >
 					<a href = '#' onclick = \"openModal('{$fromUser}')\">reply</a> |
-					<a href = '#' onclick = \"deleteComment({$mailId})\" >delete</a> |
+					<a href = '#' onclick = \"deleteMessage({$mailId})\" >delete</a> |
 
 			</div>";
 

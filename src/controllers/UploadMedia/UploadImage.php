@@ -32,4 +32,6 @@
   $sql->uploadGroupLinks($groups, $mediaId);
 
   echo "upload image";
+
+  header('Location: /Artzy/indexTest.php?controller=uploadMedia&action=home');
  ?>

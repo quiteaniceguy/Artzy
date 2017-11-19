@@ -3,6 +3,8 @@
 <link href = "https://fonts.googleapis.com/css?family=Lora" rel = "stylesheet">
 <link rel="icon" href="../../favicon.PNG" type="image/png">
 
+<?php error_reporting(0); ?>
+
 <div id = 'back'>
 	<img id='backImage' src = '../../Backgrounds/stageflipped.jpg' />
 </div>
