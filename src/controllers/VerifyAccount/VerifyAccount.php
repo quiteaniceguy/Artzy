@@ -25,7 +25,7 @@
 
 		$sql->updateUserActivation($user["id"], 1);
 		echo "account verified";
-		header('Location: /Artzy/indexTest.php?controller=login&action=home');
+		header('Location: /Artzy/index.php?controller=login&action=home');
 	}else{
 		echo "codes don't match";
 	}

@@ -33,5 +33,5 @@
 
   echo "upload image";
 
-  header('Location: /Artzy/indexTest.php?controller=uploadMedia&action=home');
+  header('Location: /Artzy/index.php?controller=uploadMedia&action=home');
  ?>

@@ -12,6 +12,6 @@
   $groups = $sql->getGroupsFromSearch($_GET["searchValue"]);
 
   foreach ($groups as $group){
-    echo "<a href = /Artzy/indexTest.php?controller=groupViewer&action=home&group={$group}>{$group}<a/><br/>";
+    echo "<a href = /Artzy/index.php?controller=groupViewer&action=home&group={$group}>{$group}<a/><br/>";
   }
  ?>

@@ -32,5 +32,5 @@
 </div>
 
 <div id="loginLink">
-	Already have an account? Login <a href="/Artzy/indexTest.php?controller=login&action=home"><b>here!</b></a>
+	Already have an account? Login <a href="/Artzy/index.php?controller=login&action=home"><b>here!</b></a>
 </div>

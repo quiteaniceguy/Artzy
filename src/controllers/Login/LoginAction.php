@@ -30,7 +30,7 @@
 			setcookie("ARTZY_PASSWORD", $pass, time() + (86400 * 30), "/");
 
 			//header( 'Location: ../ProfilePage/profilePage.php' );
-			header( 'Location: /Artzy/indexTest.php?controller=groupViewer&action=home' );
+			header( 'Location: /Artzy/index.php?controller=groupViewer&action=home' );
 		}else{
 			$_SESSION["m_Login"]="Unverified Account. Check your email to verify(make sure to check your SPAM folder).";
 			header('Location: /Artzy/indexTest.php?controller=login&action=home');
@@ -39,11 +39,11 @@
 	}else{
 		if($_GET["cookie"] == 1){
 			$_SESSION["cookie"] = "1" ;
-			header('Location: /Artzy/indexTest.php?controller=login&action=home');
+			header('Location: /Artzy/index.php?controller=login&action=home');
 
 		}else{
 			$_SESSION["m_Login"] = "password or username incorrect" ;
-			header('Location: /Artzy/indexTest.php?controller=login&action=home');
+			header('Location: /Artzy/index.php?controller=login&action=home');
 			echo "no user found";
 		}
 

@@ -21,7 +21,7 @@
 		$result = $sqlInterface->getUser($_POST["username"]);
 
 		if($result != false ){
-			header( 'Location:/Artzy/indexTest.php?controller=createAcc&action=home&error=USERNAME ALREADY EXISTS' );
+			header( 'Location:/Artzy/index.php?controller=createAcc&action=home&error=USERNAME ALREADY EXISTS' );
 			die('other account already exists');
 			$otherAccount = true;
 		}
@@ -39,13 +39,13 @@
 			is_numeric($_POST["age"]) &&
 			is_numeric($_POST["phoneNumber"]) ;
 		if (!$formFilledOut) {
-			header( 'Location: /Artzy/indexTest.php?controller=createAcc&action=home&error=MUST FILL OUT EVERYTHING' );
+			header( 'Location: /Artzy/index.php?controller=createAcc&action=home&error=MUST FILL OUT EVERYTHING' );
 		}
 
 		//check if passwords match
 		$passwordsMatch = $_POST["password"] == $_POST["passwordCheck"];
 		if (!$passwordsMatch) {
-			header( 'Location: /Artzy/indexTest.php?controller=createAcc&action=home&error=PASSWORD DO NOT MATCH' );
+			header( 'Location: /Artzy/index.php?controller=createAcc&action=home&error=PASSWORD DO NOT MATCH' );
 		}
 
 		///create verification code for user to verify account, and upload user info

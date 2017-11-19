@@ -117,7 +117,7 @@ class DisplayMedia{
     //start textContent
     $returnText = $returnText . "<div class = 'imageContent' >";
 
-    $returnText = $returnText . "<a href = '/Artzy/indexTest.php?controller=mediaViewer&action=home&group=general&mediaId={$tempMedia["id"]}' target = '_blank' >" .
+    $returnText = $returnText . "<a href = '/Artzy/index.php?controller=mediaViewer&action=home&group=general&mediaId={$tempMedia["id"]}' target = '_blank' >" .
     "<img id='userImage' style='height: {$adj_img_height}px; width: {$adj_img_width}px; ' src='{$config["storage"]["images"]}{$tempMedia["id"]}.jpg' />" .
     "</a>";
 
@@ -175,7 +175,7 @@ class DisplayMedia{
     $returnText = $returnText . "<div class = 'textContent' >";
 
     if ($cut && strlen($tempMedia["getText"]["mediaText"]) > 1000){
-      $textToDisplay = $this->trimContent($tempMedia["getText"]["mediaText"], 1000) . ".........<a href = '/Artzy/indexTest.php?controller=mediaViewer&action=home&group=general&mediaId={$tempMedia["id"]}' target = '_blank' style = 'color: blue;' >(more)</a>";
+      $textToDisplay = $this->trimContent($tempMedia["getText"]["mediaText"], 1000) . ".........<a href = '/Artzy/index.php?controller=mediaViewer&action=home&group=general&mediaId={$tempMedia["id"]}' target = '_blank' style = 'color: blue;' >(more)</a>";
       $returnText = $returnText . $textToDisplay;
     }else{
       $returnText = $returnText . $tempMedia["getText"]["mediaText"];
@@ -237,7 +237,7 @@ class DisplayMedia{
     if ($selectMediaOptions[1]) {
       $returnText = $returnText . "<div class = 'mediaOption' >
 
-      <a href='/Artzy/indexTest.php?controller=profileViewer&action=home&username={$tempMedia["getUsername"]["username"]}' target = '_blank'>
+      <a href='/Artzy/index.php?controller=profileViewer&action=home&username={$tempMedia["getUsername"]["username"]}' target = '_blank'>
         <img id='imageOptionsProfileIcon' class='profileIcon' style='height: 5.75vh; width: 2.75vw; ' src='/Artzy/icons/profileIcon.gif'  />
       </a>
 

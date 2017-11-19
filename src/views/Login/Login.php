@@ -41,6 +41,6 @@ the mural.
 		-->
 	</div>
 	<div id="createAccLink">
-		Don't have an account? Make one <a href="/Artzy/indexTest.php?controller=createAcc&action=home"><b>here!</b></a>
+		Don't have an account? Make one <a href="/Artzy/index.php?controller=createAcc&action=home"><b>here!</b></a>
 	</div>
 </div>
