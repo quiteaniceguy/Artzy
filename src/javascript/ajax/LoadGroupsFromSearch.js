@@ -1,5 +1,5 @@
 function showResult(str) {
-    
+
     if (str.length==0){
       document.getElementById("livesearch").innerHTML="";
       document.getElementById("livesearch").style.border="0px";
@@ -32,6 +32,6 @@ function showResult(str) {
 
 }
 
-function testFunc(){
-  window.location.href = "/Artzy/indexTest.php?controller=groupViewer&action=home&group=general";
+function openGeneralGroup(){
+  window.location.href = "/Artzy/index.php?controller=groupViewer&action=home&group=general";
 }

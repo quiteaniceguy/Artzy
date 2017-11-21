@@ -28,7 +28,7 @@ the mural.
 	</div>
 </div>
 
-<div  id = 'titleQuote'><b>A place for students to share and get feedback on art, writing, and music</b><br/><br/>still in beta</div>
+<div  id = 'titleQuote'><b>A place for students to share and get feedback on art, writing, and music</b><br/><br/>alpha</div>
 <div id="loginFooter">
 	<div id="copyrightInfo">
 		<!-- TM + © Artzy. All rights reserved. -->
